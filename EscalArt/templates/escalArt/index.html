@@ -1,0 +1,280 @@
+{% load static%} {% load shuffle %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <title>EscalArt</title>
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/botones.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Ayuda-Cliente.css' %}">
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Slider.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/home.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Open+Sans:wght@700&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    {% include 'escalArt/includes/menu.html' %}
+    <!-- slider -->
+    <div class="container-slider">
+        <div class="slider" id="slider">
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/dibujar.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">¿Tienes dudas de como usar nuestra pagina?</h2>
+                    <p class="slider__txt">Para mas información ingresa aqui</p>
+                    <a href="{% url 'ayudacliente' %}" style="text-decoration: none;"><button class="btn---3">Ingresar</button></a>
+                </div>
+            </div>
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/Aguila.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">¿Deseas conocer a nuestro equipo de creadores?</h2>
+                    <p class="slider__txt">Para mas información revisa nuestro blog</p>
+                    <a href="{% url 'sobre_nosotros' %}" style="text-decoration: none;"><button class=" btn---3">Ingresar</button></a>
+                </div>
+            </div>
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/dibujo_2.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">Si nesesitas ayuda ingresa Aqui</h2>
+                    <p class="slider__txt"></p>
+                    <a href="{% url 'ayudacliente' %}" style="text-decoration: none;"><button class="btn---3">Ingresar</button></a>
+                </div>
+            </div>
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/dibujo-realista.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">¿Deseas conocer a nuestro equipo de creadores?</h2>
+                    <p class="slider__txt">Para mas información revisa nuestro blog</p>
+                    <a href="{% url 'sobre_nosotros' %}" style="text-decoration: none;"><button class=" btn---3">Ingresar</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
+        <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+
+    </div>
+    <script type="text/javascript" src="{% static 'EscalArt/js/Slider.js' %}"></script>
+
+    <div class="scrol"></div>
+
+    <!--Publicaciones mas vistas-->
+    <h1 class="titulo">Lo mas visto!</h1>
+    <section class="section-chips">
+        <div class="chips-container">
+            {% for mt in common_tags %}
+            <span><a href="{% url 'tagged' mt.slug %}" style="text-decoration: none;" class="badge badge-success chips">{{mt}}</a></span> {% endfor %}
+            <!-- <span class="chips">Categoria 1</span>
+            <span class="chips">Categoria 2</span>
+            <span class="chips">Categoria 3</span>
+            <span class="chips">Categoria </span> -->
+        </div>
+    </section>
+    <div style="background: linear-gradient(#04538B, transparent);">
+    <section class="galeria">
+        {% if posts is not None %} {% for p in posts %}
+        <!--  -->
+        <article class="post">
+
+            <div class="post-body ">
+                <div class="post-container">
+                    <a class="column" id="no-decoration-a" href="{% url 'perfil' p.idUser.username %}">
+                        
+                        {% if p.idUser.imagen %}
+                        <img id="foto-perfil" src="/{{ p.idUser.imagen}}" alt="Galeria de imagenes">
+                            {%else%}
+                            <img src="{% static 'EscalArt/img/perfil.jpg' %}" id="foto-perfil" alt="">
+                        {% endif %}
+                            
+                    </a>
+                    <a class="column " id="no-decoration-a" href="{% url 'perfil' p.idUser.username %}">
+                        <h3 class="username">{{p.idUser.username}}</h3>
+                    </a>
+                    <h2 class="titulo-post column">{{p.titulo}}</h2>
+
+                </div>
+                <span class="linea_2"></span>
+                <P class="descripcion-post " id="descripcion-post">{{p.descripcion}}
+                    <br>{% for tag in p.tags.all %}
+                    <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-info">#{{ tag }}</a> {% endfor %}
+
+                </P>
+                <div>
+                    {% if user.is_authenticated %}
+                    <form class="post-likes column" style="background: none;" method="post" action="{% url 'LikePublicacion' p.idPublicacion %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{request.path}}">
+                        <button type="submit" style="background-color:transparent; border:none;box-shadow:none;"><span class="post-likes column" style="background: none;"><i class="fa-solid fa-heart corazon"></i></span></button>
+
+
+                    </form>
+                    <span class="post-likes column" style="background: none;" id="cant-likes">{{p.cantLikes.all.count}}</span> {%else%}
+                    <span class="post-likes column" style="background: none;"><i class="fa-solid fa-heart corazon"></i></span>
+                    <span class="post-likes column" style="background: none;" id="cant-likes">{{p.cantLikes.all.count}}</span> {%endif%}
+
+                </div>
+            </div>
+            <div class="post-header">
+                <a href="{% url 'publicacionHome' p.idUser.username p.idPublicacion %}" name="idPost" id="idPost">
+                    <img id="post-imagen" src="/{{ p.imagen }}" alt="Galeria de imagenes">
+                </a>
+            </div>
+        </article>
+        {%empty%}
+        <h1 style="text-align: center;width: 100vw;">No se encontraron publicaciones</h1>
+        <!--  -->
+        {% endfor %}
+        <!--  -->
+        {%endif%}
+    </section>
+    </div>
+
+    <div class="linea-separadora"></div>
+
+    <!--Anuncios-->
+    <section class="about container-anuncio">
+
+        {% if user.is_authenticated %} {% if user.tipoCuenta.tipoCuenta == "cliente" %}
+        <div class="about__texts">
+            <h2 class="subtitle">¿Te gustaria ser Artista/Profesional?</h2>
+            <p class="about__paragraph">Si ya tienes una cuenta creada de usuario en nuestro sitio web, Puedes convertirla en una cuenta profesional de una forma muy facil y rapida.</p>
+            <p class="about__paragraph">Todas las personas que tienen una cuenta de artista tienen beneficios en nuestro sitio web, en donde ellos podran publicar sus contenidos, Poder hace comisiones a sus clientes y ademas si eres bastante conocido en nuestro sitio, apareceras
+                en los Artistas mas ¡Famosos! ¿Que esperas para cambiarla? <span>¡Cambiate Ya!</span>
+            </p>
+            <div class="btn-anuncio">
+                <a href="{% url 'configuracion' %}"><button class="btn--3">Ser Artista</button></a>
+            </div>
+        </div>
+        <figure class="about__img">
+            <img src="{% static 'EscalArt/img/perfil_artista.gif' %}" class="about__picture ">
+        </figure>
+        {% else %}
+        <figure class="about__img about__img--left ">
+            <img src="{% static 'EscalArt/img/tags.gif' %}" class="about__picture ">
+        </figure>
+        <div class="about__texts ">
+            <h2 class="subtitle ">¿Ya Seleccionaste tus tipos de tags?</h2>
+            <p class="about__paragraph ">Si ya tienes una cuenta de artista creada en nuestro sitio web, podras personalizar tus tags desde la configuracion de tu perfil.</p>
+            <p class="about__paragraph ">Esto servira para que cuando un usuario quiera buscar por tag "# " se mostrara todo tipo de publicacion y perfil con ese dicho tag, para que asi los usuarios puedan visualizar tu perfil e publicaciones y asi podras ser mas conocido en nuestro
+                sitio. <span>¡Personalizalo Ya!</span></p>
+            <div class="btn-anuncio ">
+                <a href="{% url 'configuracion' %}"><i class="fa-solid fa-gear "></i></a>
+            </div>
+        </div>
+        {% endif %} {% else %}
+        <!--Mostrar si no hay cuenta conectadas-->
+        <div class="about__texts">
+            <h2 class="subtitle">¡Create una cuenta!</h2>
+            <p class="about__paragraph">Podras crearte una cuenta en nuestro web cuando gustes, podras crearte de 2 tipos diferentes "Usuario" o "Artista" ¿Cual tienes pensado en crearte?.</p>
+            <p class="about__paragraph">¿Para que sirve crearse una cuenta? si eres un usuario podras pedirle a los artistas que te creen un diseño para poder comprarlo. Si eres Artista tendras varios beneficios en nuestro sistema web, ademas de poder estar entre los tops y vender
+                tus diseños a los usuarios.<span> ¡Creala ya!</span>
+            </p>
+            <div class="btn-anuncio">
+                <a href="{% url 'registro' %}"><button class="btn--3">Crear Cuenta</button></a>
+            </div>
+        </div>
+        <figure class="about__img">
+            <img src="{% static 'EscalArt/img/crear_cuenta.gif' %}" class="about__picture ">
+        </figure>
+
+        {% endif %}
+
+
+
+
+    </section>
+    <div class="linea-separadora"></div>
+
+    <!--Cartas de presentacion-->
+    <div class="color-cards" style="background: #F5F5F5; margin-top: 15px;">
+        <div class="title-artistas">
+            <h1>Artistas mas <span>¡Seguidos!</span></h1>
+        </div>
+        <section class="body-cards">
+
+            {% for perfil in listArt %} {% if perfil.idUser.tipoCuenta.tipoCuenta == 'artista' %}
+            <div class="card-presentacion">
+                <div class="card-content">
+                    <span></span>
+                    <div class="card-img">
+
+                        {% if perfil.idUser.imagen %}
+                        <img src="/{{perfil.idUser.imagen}}"> {% else %}
+                        <img src="{% static 'EscalArt/img/perfil.jpg' %}"> {% endif %}
+
+                    </div>
+                    <h4>{{perfil.idUser.username}}</h4>
+                    <p>Calificacion</p>
+                    <div class="rating-cards">
+                        <i class="fa fa-star{% if perfil.calificacion == 1 %}-half-o{% elif perfil.calificacion < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                        <i class="fa fa-star{% if perfil.calificacion == 3 %}-half-o{% elif perfil.calificacion < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                        <i class="fa fa-star{% if perfil.calificacion == 5 %}-half-o{% elif perfil.calificacion < 6 %}-o {% endif %}" aria-hidden="true"></i>
+                        <i class="fa fa-star{% if perfil.calificacion == 7 %}-half-o{% elif perfil.calificacion < 8 %}-o {% endif %}" aria-hidden="true"></i>
+                        <i class="fa fa-star{% if perfil.calificacion == 9 %}-half-o{% elif perfil.calificacion < 10 %}-o {% endif %}" aria-hidden="true"></i>
+                    </div>
+                    <div class="btn-cards">
+                        <a href="{% url 'perfil' perfil.idUser.username %}" style="text-decoration: none;"><button src="#" type="button" class="btn--3">Ver perfil</button></a>
+                    </div>
+                </div>
+                <!-- <div class="links">
+                    <a href="#"><i class="fa-solid fa-user"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div> -->
+            </div>
+            {% endif %} {% endfor %}
+
+        </section>
+    </div>
+
+    <!--  Conoce a nuestro Equipo  -->
+    <section class="questions contenedor-CNE">
+        <section class="textos-questions">
+            <h1>Conoce a nuestro equipo y nuestra Historia.</h1>
+            <p>Podras conocer nuestra historia de como empezamos a crear nuestro sitio web desde 0, ademas de como estamos en al actualidad y de ser uno de los sitios mas grandes de Diseño Digital/Arte. </p>
+            <div class="btn-question-txt">
+                <a href="{% url 'sobre_nosotros' %}" style="text-decoration: none;"><button class="btn-bt btn--3">Conocenos</button></a>
+            </div>
+        </section>
+        <img src="{% static 'EscalArt/img/equipo-nosotros.jpg' %}" alt="">
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!--  -->
+    {% include 'escalArt/includes/footer.html' %}
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js "></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js "></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+    <!-- <script src="{% static 'escalArt/js/Slider.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'EscalArt/js/question.js' %}"></script> -->
+</body>
+
+</html>

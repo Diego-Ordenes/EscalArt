@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/botones.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/chats.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <!--Header-->
+    {% include 'escalArt/includes/menu.html' %}
+
+    <div class="scrol"></div>
+
+
+
+
+    <!--Chat nuevo-->
+    <div style=" background: linear-gradient(#04538B, transparent)  ;">
+        <section class="body-chat" style="box-shadow: rgb(4 17 29 / 40%) 0px 0px 8px 0px;">
+            <div class="seccion-titulo">
+                <h3>
+                    <i class="fas fa-comments"></i> Mensajes ...
+                </h3>
+            </div>
+            <div class="seccion-usuarios">
+                <div class="seccion-buscar">
+                    <div class="input-buscar">
+                        <input type="search" placeholder="Buscar usuario">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="seccion-lista-usuarios">
+                    {% for s in sol %}
+                    <!--  -->
+                    {% if user.username == s.usernameArtista %}
+                    <!--  -->
+                    {% for c in cli %}
+                    <!--  -->
+                    {% if s.usernameArtista == user.username and c.username == s.idCliente.username %}
+
+                    <div class="usuario" onclick="chat('{{s.idSolicitud}}');" id="{{s.idSolicitud}}-submit">
+
+                        <!--  -->
+
+                        <input id="{{s.idSolicitud}}-input" type="text" size="100" value="{{s.idSolicitud}}" hidden><br>
+
+                        <div class="avatar">
+
+                            {% if c.imagen %}
+                            <img src="/{{c.imagen}}" alt="img"> {% else %}
+                            <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="img"> {% endif %}
+
+                            <span class="estado-usuario enlinea"></span>
+                        </div>
+                        <div class="cuerpo">
+
+
+                            <span><input style="background-color:transparent; border:none;box-shadow:none;" onclick="chat('{{s.idSolicitud}}');" id="{{s.idSolicitud}}-submit"  type="button" value="{{s.idCliente.nombre}} (cliente)"></span>
+
+                            <span class="username-block"> @{{s.idCliente.username}}</span>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                    {%endif%}
+                    <!--  -->
+                    {% endfor %}
+                    <!--  -->
+                    {% else %}
+                    <!--  -->
+                    {% for c in cli %}
+                    <!--  -->
+                    {% if s.idCliente == user and c.username == s.idCliente.username %}
+                    <div class="usuario" onclick="chat('{{s.idSolicitud}}');" id="{{s.idSolicitud}}-submit">
+
+                        <!--  -->
+
+                        <input id="{{s.idSolicitud}}-input" type="text" size="100" value="{{s.idSolicitud}}" hidden><br>
+
+                        <div class="avatar">
+
+                            {% for a in cli %} {% if s.usernameArtista == a.username %} {% if a.imagen %}
+
+                            <img src="/{{a.imagen}}" alt="img"> {% else %}
+                            <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="img"> {% endif %} {% endif %} {% endfor %}
+
+
+                            <span class="estado-usuario enlinea"></span>
+                        </div>
+                        <div class="cuerpo">
+
+                            {% for a in cli %}
+                            <!--  -->
+                            <!--  -->
+                            {% if s.usernameArtista == a.username %}
+                            <span><input style="background-color:transparent; border:none;box-shadow:none;" onclick="chat('{{s.idSolicitud}}');" id="{{s.idSolicitud}}-submit"  type="button" value="{{a.nombre}}"></span>
+                            <!--  -->
+                            {% endif %}
+                            <!--  -->
+                            {% endfor %}
+
+
+
+
+                            <span class="username-block"> @{{s.usernameArtista}}</span>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                    <!--  -->
+                    {%endif%}
+                    <!--  -->
+                    {% endfor %}
+
+                    <!--  -->
+                    {%endif%}
+                    <!--  -->
+                    {% endfor %}
+                </div>
+            </div>
+            {%block content%}
+            <div class="seccion-chat">
+                <div class="usuario-seleccionado">
+
+                    <div class="cuerpo">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="opciones">
+
+                    </div>
+                </div>
+                <div class="panel-chat" id="panel-chat">
+                    <br><br><br><br>
+                    <br><br>
+                    <h1 style="text-align: center;">Selecciona un chat</h1>
+                    <br><br>
+                    <br><br><br><br>
+
+                </div>
+                <div class="panel-escritura">
+
+                </div>
+            </div>
+            {% endblock %}
+        </section>
+    </div>
+
+    <!--Pie de la pagina-->
+    {% include 'escalArt/includes/footer.html' %}
+
+    <script src="{% static 'EscalArt/js/chat.js' %}"></script>
+    <script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

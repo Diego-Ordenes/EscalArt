@@ -1,0 +1,214 @@
+/* elegir tipo de cuenta al crear */
+
+.select-cuenta {
+    margin: 0 20% 5%;
+    background: #12130F;
+    border: 2px solid #000;
+    padding: 40px 0;
+    border-radius: 30px;
+}
+
+.title-select {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    margin: 0 15%;
+}
+
+.div-tipo-cuenta {
+    text-align: center;
+    padding: 30px 30px;
+    border: 1px solid #000;
+    margin: 30px;
+    height: 100%;
+    border-radius: 20px;
+    background: #313435;
+    position: relative;
+}
+
+.div-tipo-cuenta span {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    background: #fff;
+    right: 0;
+    top: 0;
+    margin: 15px;
+}
+
+.div-tipo-cuenta h1 {
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+.div-tipo-cuenta p {
+    font-size: 1rem;
+    padding: 10px;
+    color: #fff;
+}
+
+.div-tipo-cuenta i {
+    font-size: 45px;
+    color: green;
+    cursor: pointer;
+}
+
+
+/*Selecciona tu categoria parte 2 */
+
+.selec-categoria-fondo {
+    margin: 0 20% 5%;
+    background: #12130F;
+    border: 2px solid #000;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.categoria-titulo {
+    text-align: center;
+}
+
+.categoria-titulo h1 {
+    font-size: 1.8rem;
+    color: green;
+    padding: 0 0 15px 0;
+}
+
+.categoria-titulo p {
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0 10% 0;
+}
+
+.mostrar-cat input {
+    height: 25px;
+    width: 25px;
+}
+
+.mostrar-cat span {
+    font-size: 1.1rem;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.buscar-categoria {
+    padding: 20px 0px;
+    text-align: center;
+    margin: 0 20%;
+}
+
+.buscar-categoria input {
+    padding: 10px 5px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    color: #fff;
+    width: 100%;
+}
+
+.lista-sugerencias {
+    z-index: 0;
+}
+
+.lista-sugerencias h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 10px 0;
+}
+
+.lista-sugerencias ul {
+    padding: 0 5%;
+}
+
+.lista-sugerencias ul li {
+    padding: 8px 0;
+    font-size: 1.1rem;
+    list-style: none;
+    color: #fff;
+    position: relative;
+}
+
+.lista-sugerencias ul li input {
+    position: absolute;
+    right: 0;
+    height: 25px;
+    width: 25px;
+}
+
+.linea_cat {
+    height: 3px;
+    background: green;
+    width: 100%;
+    display: block;
+    margin: 15px 0;
+}
+
+.btn-cat {
+    position: relative;
+    text-align: center;
+}
+
+.btn-categoria {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: greenyellow;
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    margin: 0 30px;
+}
+
+
+/* .btn-form {
+    height: 3rem;
+    width: 12rem;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background: #111827;
+    cursor: pointer;
+    padding: 10px 30px;
+    color: #fff;
+    margin: 15px 40px;
+}
+
+.btn-form::after {
+    content: '';
+    height: calc(100% + 10px);
+    width: calc(100% + 10px);
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    z-index: 2;
+    border-radius: 10px;
+    background: linear-gradient(90deg, deeppink, deepskyblue, lawngreen, deeppink);
+    background-size: 300% 100%;
+    animation: animate 3s ease infinite;
+}
+
+@keyframes animate {
+    to {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 90% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+} */
+
+@media (max-width:600px) {
+    .select-cuenta {
+        margin: 0 0 5% 0;
+        background: #12130F;
+        border: 2px solid #000;
+        padding: 40px 0;
+        border-radius: 30px;
+    }
+}

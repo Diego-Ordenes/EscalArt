@@ -1,0 +1,70 @@
+{% extends 'escalArt/perfil_cliente.html' %} {% load static %} {% block content %}
+<div class="titulo-art">
+    <h1>{{comision.idComision.idArtista.username}}</h1>
+</div>
+<div class="comisiones">
+    {% if comision.idComision.idEstado.estado == "cancelada" %}
+    <ul>
+        <li class="li-left"><i class="fa-solid fa-box-archive" style="color: #bc0b0b;"></i>
+            <span class="span-left span-dis" style="background: #bc0b0b;"></span>
+            <p style="color: #bc0b0b;">Tu Comision ha sido recibida</p>
+
+
+
+
+
+        </li>
+        <li class="li-left">
+            <i class="fa-solid fa-spinner" style="color: #bc0b0b;"></i>
+            <span class="span-centro span-dis" style="background: #bc0b0b;"></span>
+            <p style="color: #bc0b0b;">Tu comision está en desarrollo</p>
+            <span class="span-centro_2" style="background: #bc0b0b;"></span>
+        </li>
+        <li class="li-left">
+            <i class="fa-solid fa-paper-plane" style="color: #bc0b0b;"></i>
+            <span class="span-right span-dis" style="background: #bc0b0b;"></span>
+            <p style="color: #bc0b0b;"> ¡Tu comisión ya esta lista! </p>
+            <!--  -->
+
+        </li>
+    </ul>
+    {% else %}
+    <ul>
+        <li class="li-left"><i class="fa-solid fa-box-archive"></i>
+            <span class="span-left span-dis"></span>
+            <p>Tu Comision ha sido recibida</p>
+        </li>
+        <li class="li-left">
+            {% if comision.idComision.idEstado.estado == "en desarrollo" or comision.idComision.idEstado.estado == "terminada" %}
+            <i class="fa-solid fa-spinner"></i>
+            <span class="span-centro span-dis"></span>
+            <p>Tu comision está en desarrollo</p>
+            <span class="span-centro_2"></span> {% else %}
+            <i class="fa-solid fa-spinner" style="color: gray;"></i>
+            <span class="span-centro span-dis" style="background: gray;"></span>
+            <p style="color: gray;">Tu comision está en desarrollo</p>
+            <span class="span-centro_2" style="background: gray;"></span>
+            <!--  -->
+            {%endif%}
+        </li>
+        <li class="li-left">
+            {% if comision.idComision.idEstado.estado == "terminada" %}
+            <i class="fa-solid fa-paper-plane"></i>
+            <span class="span-right span-dis"></span>
+            <p> ¡Tu comisión ya esta lista! </p>
+
+            {% else %}
+            <i class="fa-solid fa-paper-plane" style="color: gray;"></i>
+            <span class="span-right span-dis" style="background: gray;"></span>
+            <p style="color: gray;"> ¡Tu comisión ya esta lista! </p>
+
+            <!--  -->
+            {%endif%}
+        </li>
+    </ul>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

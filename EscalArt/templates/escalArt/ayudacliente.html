@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda Cliente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Ayuda-Cliente.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Slider.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    {% include 'escalArt/includes/menu.html' %}
+
+    <div class="scrol"></div>
+    <script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+
+    <!--img ayuda cliente-->
+    <!-- <section class="hero">
+        <img src="{% static 'EscalArt/img/mujer-escribiendo.jpg' %}" alt="" class="hero">
+        <div class="hero__container cont-hero">
+            <h1 class="hero__title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, perferendis?</h1>
+            <p class="hero__paragraph">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            <a href="{% url 'registro' %}"><button class="cta btn--3">Comienza ahora</button></a>
+        </div>
+    </section> -->
+    <!-- slider -->
+    <div class="container-slider">
+        <div class="slider" id="slider">
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/dibujar.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">¿Tienes dudas de como usar nuestra pagina?</h2>
+                    <p class="slider__txt">Para mas información ingresa aqui</p>
+                    <a href="{% url 'ayudacliente' %}" style="text-decoration: none;"><button class="btn---3">Ingresar</button></a>
+                </div>
+            </div>
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/Aguila.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">¿Deseas conocer a nuestro equipo de creadores?</h2>
+                    <p class="slider__txt">Para mas información revisa nuestro blog</p>
+                    <a href="{% url 'sobre_nosotros' %}" style="text-decoration: none;"><button class=" btn---3">Ingresar</button></a>
+                </div>
+            </div>
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/dibujo_2.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">Si nesesitas ayuda ingresa Aqui</h2>
+                    <p class="slider__txt"></p>
+                    <a href="{% url 'ayudacliente' %}" style="text-decoration: none;"><button class="btn---3">Ingresar</button></a>
+                </div>
+            </div>
+            <div class="slider__section">
+                <img src="{% static 'EscalArt/img/dibujo-realista.jpg' %}" alt="" class="slider__img">
+                <div class="slider__content">
+                    <h2 class="slider__title">¿Deseas conocer a nuestro equipo de creadores?</h2>
+                    <p class="slider__txt">Para mas información revisa nuestro blog</p>
+                    <a href="{% url 'sobre_nosotros' %}" style="text-decoration: none;"><button class=" btn---3">Ingresar</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
+        <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+
+    </div>
+    <script type="text/javascript" src="{% static 'EscalArt/js/Slider.js' %}"></script>
+    <!-- Cards Ayuda Cliente-->
+    <section class="fondo-card">
+        <article class="card-1">
+            <div class="card__content">
+                <h3 class="card__title">¿Quienes somos?</h3>
+                <span class="card_subtitle">04 de Junio, 2022 | Ayuda a Usuario</span>
+                <p class="card__descripcion">Somos una pagina web que tiene como propósito facilitar la comunicación entre clientes y artistas que busquen emprender en nuesto sitio.</p>
+            </div>
+        </article>
+        <article class="card-2">
+            <div class="card__content">
+                <h3 class="card__title">¿Tienes alguna consulta?</h3>
+                <span class="card_subtitle">04 de Junio, 2022 | Ayuda a Usuario</span>
+                <div class="input-cont">
+                    <div class="input">
+                        <input type="text" required>
+                        <label for="">Escribe tu consulta...</label>
+                    </div>
+                </div>
+                <div class="btn-consulta">
+                    <button class="btn--3">Enviar</button>
+                </div>
+            </div>
+        </article>
+        <article class="card-3">
+            <div class="card__content">
+                <h3 class="card__title">¿Que es una cuenta profesional?</h3>
+                <span class="card_subtitle">04 de Junio, 2022 | Ayuda a Usuario</span>
+                <p class="card__descripcion">Es una cuenta especialmente para artistas, en donde pueden mostrar su arte y organizar las comisiones que tiene con sus respectivos clientes.</p>
+            </div>
+        </article>
+    </section>
+    <!--Info  +-->
+    <section class="cont-hero about-general">
+        <h2 class="subtitle-at">¿Que podras hacer en nuestro sitio web?</h2>
+        <p class="at__paragraph">En nuestro sitio podras visualizar el arte creado por distintos usuarios, además de pedir comisiones a tus artistas favoritos y que estos puedan organizar su trabajo a través de un medio especializado para esto.
+        </p>
+
+        <div class="at__main">
+            <article class="at__icons">
+                <i class="fa-solid fa-palette"></i>
+                <h3 class="at__title">Diseñar</h3>
+                <p class="at__paragraph">Puedes crear y subir tu propio arte, y este podrá ser calificado por los usuarios.</p>
+            </article>
+
+            <article class="at__icons">
+                <i class="fa-solid fa-tags"></i>
+                <h3 class="at__title">Vender</h3>
+                <p class="at__paragraph">Podrás organizar la compra/venta de contenido artístico</p>
+            </article>
+
+            <article class="at__icons">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <h3 class="at__title">Comisionar</h3>
+                <p class="at__paragraph">Podrás gestionar y tener tus propios encargos para los clientes.</p>
+            </article>
+        </div>
+    </section>
+
+
+
+    {% include 'escalArt/includes/footer.html' %}
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'EscalArt/js/ayuda_cliente.js' %}"></script>
+
+</html>

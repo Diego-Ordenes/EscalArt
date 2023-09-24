@@ -1,0 +1,672 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Artista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/ErrorMessages.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/perfil.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/publicacion.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+</head>
+
+<body>
+    {% include 'escalArt/includes/menu.html' %} {% if message %}
+    <div class="error">{{message}}</div>
+
+    {% endif %}
+
+    <!--<script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>-->
+
+    <!--Diseño Perfi-->
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <!-- 5 Inicio de for para mostrar los datos en perfil segun el usuario conectado -->
+                {% for perfil in perfil %}
+                <!-- 6 inicio if para identificar perfil segun user -->
+                {% if list.idUser == perfil.idUser.idUser %}
+
+                <!-- header -->
+
+                {% if perfil.img_header %}<img class="perfil-usuario-portada_2" src="/{{ perfil.img_header }}"> {% else %}
+                <img class="perfil-usuario-portada_2" src="{% static 'EscalArt/img/fondodeterminado.jpg' %}" alt=""> {% endif %}
+
+
+                <!-- 6 FIN if para identificar perfil segun user -->
+                {% endif %}
+                <!-- 5 FIN ciclo for que lista los perfiles -->
+                {% endfor %}
+                <div class="perfil-usuario-avatar">
+
+                    {% for la in listArt %}
+                    <!-- 16 Inicio if para verificar user conectado -->
+                    {% if list.username == la.username %} {% if la.imagen %}
+                    <img src="/{{la.imagen}}" class="foto_perfil" alt=""> {% else %}
+                    <img src="{% static 'EscalArt/img/perfil.jpg' %}" class="foto_perfil" alt=""> {% endif %}
+
+                    <!-- formulario para editar foto de perfil -->
+
+                    <!-- 16 Fin if para verificar user conectado -->
+                    {% endif %}
+                    <!-- 15 Fin for para cambiar foto perfil -->
+                    {% endfor %}
+
+                    <!-- <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""> -->
+                    {% if list.idUser == user.idUser %}
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %} {{foto.as_hidden}} <input type="file" id="real-file2" name="pfp" hidden="hidden">
+                        <button type="button" class="boton-avatar" id="custom-button2" onclick="MostrarAlerta();">
+                            <i class="far fa-image"></i>
+                        </button>
+
+                        <div class="aleta-aceptar-cerrar" style=" border-radius:10px; width: 300px;height:200px;background-color:white;position:absolute;top: 30%;
+                        left: -30%;display: none;" id="AlertaOk">
+                            <h1>¿Quieres cambiar la imagen?</h1>
+                            <div class="btn-aceptar-cerrar-img">
+                                <button onclick="OcultarAlerta();" class="btn-Editar-Bio btnPfp btn--3" type="submit" name="fotoPerfil">Aceptar</button>
+                                <button onclick="OcultarAlerta();" class="btnPfp btn--3">Cancelar </button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                    {%endif%}
+                </div>
+                {% if list.idUser == user.idUser %}
+                <form action="" method="POST" enctype='multipart/form-data'>
+                    {% csrf_token %} {{edit.img_header.as_hidden}}
+                    <input type="file" id="real-file3" name="header" hidden="hidden">
+                    <button type="button" class="boton-portada" id="custom-button3" onclick="MostrarAlerta2();">
+                        <i class="far fa-image"></i> Cambiar fondo
+                    </button>
+
+                    <div id="AlertaOk2">
+                        <h1 class="title-cambiar-fondo">¿Quieres cambiar el fondo?</h1>
+                        <div class="btn-aceptar-cerrar-fondo-img">
+                            <button onclick="OcultarAlerta2();" class="btn-Editar-Bio btnHeader btn--3" type="submit" name="EditHeader">Aceptar</button>
+                            <button onclick="OcultarAlerta2();" class="btnHeader btn--3" style="margin-left: 5%;">Cancelar </button>
+                        </div>
+
+
+                    </div>
+
+                </form>
+                {%endif%}
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                {% if list.username == user.username %}
+                <button onclick="MostrarPublicacion();" class="btn-Crear-Publicacion btn--3"><i class="fa-solid fa-paint-roller"></i>Crear Publicacion</button> {%endif%}
+                <h3 class="titulo column">{{list.username}}</h3>
+
+                <!--  -->
+                {% if list.username == user.username %}
+
+                <button onclick="MostrarConfi_bio();" class="btn-Editar-Bio btn--3"><i class="fa-solid fa-user-pen"></i>Editar Biografia</button>
+                <!--  -->
+                {%else%}
+                <div class="mb-3">
+
+                    {% if list.username == user.username %}
+                    <!--  -->
+                    {% else %}
+                    <form method="POST">
+                        {% csrf_token %} {{solicitudForm}}
+
+                        <input type="submit" class="btn-Solicitar-mensaje btn--3" value="Solicitar Mensaje" name="solicitud">
+
+                    </form>
+                    {% if user.is_authenticated %} {% if is_following %}
+                    <form method="POST" action="{% url 'remove-follower' list.idUser %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-seguir-red">
+                            
+                            Dejar de seguir
+                        </button>
+
+                    </form>
+                    <!--  -->
+                    {% else %}
+                    <form method="POST" action=" {% url 'add-follower' list.idUser %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-seguir btn--3">
+                            
+                            Seguir
+                        </button>
+                    </form>
+
+                    {% endif %} {% else %} {% if is_following %}
+                    <form method="" action="">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-seguir-red">
+                            
+                            Dejar de seguir
+                        </button>
+
+                    </form>
+                    <!--  -->
+                    {% else %}
+                    <form method="" action="">
+                        {% csrf_token %}
+                        <button type="submit " class="btn-seguir btn--3">
+                            
+                            Seguir
+                        </button>
+                    </form>
+
+                    {% endif %} {% endif %}
+                    <!--  -->
+                    {% endif %}
+
+                </div>
+                <!--  -->
+                {%endif%}
+
+                <div class="texto-bio">
+                    <!-- 5 Inicio de for para mostrar los datos en perfil segun el usuario conectado -->
+                    {% for perfil in perfil %}
+                    <!-- 6 inicio if para identificar perfil segun user -->
+                    {% if list.idUser == perfil.idUser.idUser %}
+
+                    <!-- biografia y header -->
+                    <p class="texto">{{perfil.biografia}}</p>
+
+                    {% if perfil.showTags == True %} {% for tag in perfil.tags.all %}
+                    <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-info">#{{ tag }}</a> {% endfor %} {% endif %}
+
+
+                    <!-- 6 FIN if para identificar perfil segun user -->
+                    {% endif %}
+                    <!-- 5 FIN ciclo for que lista los perfiles -->
+                    {% endfor %}
+
+                </div>
+
+                <ul class="lista-info">
+                    <span class="linea_2"></span>
+                    <!-- 5 Inicio de for para mostrar los datos en perfil segun el usuario conectado -->
+                    {% for perfil in perfil %}
+                    <!-- 6 inicio if para identificar perfil segun user -->
+
+
+                    {% if list.idUser == perfil.idUser.idUser %}
+                    <li class="lista-li">{{following_count}} Siguiendo</li>
+                    <li class="lista-li">{{numFollowers}} Seguidores</li>
+                    <button id="Boton" onclick="mostrar();"><li  class="lista-li" >{{perfil.calificacion}} <i class="fas fa-star reviews"></i></li></button>
+                    <!-- 6 FIN if para identificar perfil segun user -->
+                    {% endif %}
+
+
+
+                    <!-- 5 FIN ciclo for que lista los perfiles -->
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--Configurar Biografia-->
+
+    <section id="config-fondo">
+        <div class="config-fondo-bio">
+            <button type="button" class="button-cierra" onclick="OcultarConfi_bio();">X</button>
+            <div class="config-bio-top">
+                <h1>Configurar Biografia</h1>
+            </div>
+            <div class="config-bio-centro">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} {% for la in listArt %}
+                    <!-- 16 Inicio if para verificar user conectado -->
+                    {% if user.username == la.username %} {% if la.imagen %}
+                    <input type="file" id="real-file" name="pfp" hidden="hidden">
+                    <button type="button" id="custom-button"><img src="/{{la.imagen}}" class="foto_perfil" alt=""></button> {% else %}
+                    <input type="file" id="real-file" name="pfp" hidden="hidden">
+                    <button type="button" id="custom-button"><img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""></button> {% endif %}
+
+                    <!-- formulario para editar foto de perfil -->
+
+                    <!-- 16 Fin if para verificar user conectado -->
+                    {% endif %}
+                    <!-- 15 Fin for para cambiar foto perfil -->
+                    {% endfor %} {{form.as_hidden}}
+
+                    <!-- <span id="custom-text"></span> -->
+
+                    <!-- <a href="" id="browse"><img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""></a> -->
+                    <!-- <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""> -->
+                    <input class="bio-centro btn--3" type="submit" name="fotoPerfil" value="Editar Foto"><br><br><br>
+                    <div class="form-group">
+
+                        <label>Biografia: </label> {{edit.biografia}}
+                        <!-- <textarea placeholder="Editar..." required type=""></textarea> -->
+                    </div>
+                    <div class="bio-bottom">
+                        <input class="btn--3" type="submit" name="editar" value="Confirmar">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--Caja de Comentarios Calificaciones-->
+    <!-- https://www.youtube.com/watch?v=gDtsAWMA3Jo&ab_channel=RathanKumar -->
+    <section id="testimonials" class="calificacion-principal">
+
+        <div class="testimonials-background">
+            <div class="testimonial-heading">
+                <div class="color-testi">
+                    <button id="btn-calif-cierra" type="button" onclick="ocultar();">X</button>
+                    <h1>Calificaciones <i class="fas fa-star reviews"></i></h1>
+                </div>
+                <span>General</span>
+                <div class="reviews">
+                    <!-- 5 Inicio de for para mostrar los datos en perfil segun el usuario conectado -->
+                    {% for perfil in perfil %}
+                    <!-- 6 inicio if para identificar perfil segun user -->
+
+
+                    {% if list.idUser == perfil.idUser.idUser %}
+                    <i class="fa fa-star{% if perfil.calificacion == 1 %}-half-o{% elif perfil.calificacion < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if perfil.calificacion == 3 %}-half-o{% elif perfil.calificacion < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if perfil.calificacion == 5 %}-half-o{% elif perfil.calificacion < 6 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if perfil.calificacion == 7 %}-half-o{% elif perfil.calificacion < 8 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if perfil.calificacion == 9 %}-half-o{% elif perfil.calificacion < 10 %}-o {% endif %}" aria-hidden="true"></i>
+                    <!-- 6 FIN if para identificar perfil segun user -->
+                    {% endif %}
+
+
+
+                    <!-- 5 FIN ciclo for que lista los perfiles -->
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="contenedor-reviews">
+
+                {% for review in reviews %}
+                <div class="testimonial-box-container">
+                    <div class="testimonials-box">
+                        <div class="box-top">
+                            <div class="profile">
+                                <div class="profile-img">
+
+                                    {% if review.idUser.imagen %}
+                                    <img src="/{{review.idUser.imagen}}" alt=""> {% else %}
+                                    <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""> {% endif %}
+
+                                </div>
+                                <div class="name-user">
+                                    <strong>{{review.idUser.nombre}}</strong>
+                                    <span>@{{review.idUser.username}}</span>
+                                </div>
+                            </div>
+                            <div class="reviews">
+                                <i class="fa fa-star{% if review.rating == 1 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating == 3 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating == 5 %}-half-o{% elif review.rating < 6 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating == 7 %}-half-o{% elif review.rating < 8 %}-o {% endif %}" aria-hidden="true"></i>
+                                <i class="fa fa-star{% if review.rating == 9 %}-half-o{% elif review.rating < 10 %}-o {% endif %}" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="client-comment">
+                            <p>{{review.review}}</p>
+                        </div>
+                    </div>
+                </div>
+                {%empty%}
+                <h1 class="empty-saves">Aun no hay reviews. Se el primero!</h1>
+                {% endfor %}
+
+
+
+            </div>
+
+            {% if list.idUser == user.idUser%}
+            <form class="Comentar-Usuarios" method="POST">
+                {%csrf_token %}
+                <div class="Comentar-calificacion">
+                    <span style="margin-right: 10px;">Calificar</span><br>
+                    <div class="Comentar-iconos rate" style="background-color: white;">
+                        <!-- <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> -->
+                        <input disabled type="radio" name="rating" id="rating10" value="10" required /><label for="rating10" title="10"></label>
+                        <input disabled type="radio" name="rating" id="rating9" value="9" required /><label for="rating9" title="9" class="half"></label>
+                        <input disabled type="radio" name="rating" id="rating8" value="8" required /><label for="rating8" title="8"></label>
+                        <input disabled type="radio" name="rating" id="rating7" value="7" required /><label for="rating7" title="7" class="half"></label>
+                        <input disabled type="radio" name="rating" id="rating6" value="6" required /><label for="rating6" title="6"></label>
+                        <input disabled type="radio" name="rating" id="rating5" value="5" required /><label for="rating5" title="5" class="half"></label>
+                        <input disabled type="radio" name="rating" id="rating4" value="4" required /><label for="rating4" title="4"></label>
+                        <input disabled type="radio" name="rating" id="rating3" value="3" required /><label for="rating3" title="3" class="half"></label>
+                        <input disabled type="radio" name="rating" id="rating2" value="2" required /><label for="rating2" title="2"></label>
+                        <input disabled type="radio" name="rating" id="rating1" value="1" required /><label for="rating1" title="1" class="half"></label>
+
+
+                    </div>
+                </div>
+                <i class="fa-solid fa-face-smile"></i>
+                <input hidden="hidden" name="calificacion" value="{{calificacion}}">
+                <input readonly name="review" type="text" placeholder="Escriba su comentario...">
+                <button disabled name="enviarReview" type="submit" class="btn--3">Comentar</button>
+            </form>
+            {% else %}
+            <form class="Comentar-Usuarios" method="POST">
+                {%csrf_token %}
+                <div class="Comentar-calificacion">
+                    <span style="margin-right: 10px;">Calificar</span><br>
+                    <div class="Comentar-iconos rate" style="background-color: white;">
+                        <!-- <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> -->
+                        <input type="radio" name="rating" id="rating10" value="10" required /><label for="rating10" title="10"></label>
+                        <input type="radio" name="rating" id="rating9" value="9" required /><label for="rating9" title="9" class="half"></label>
+                        <input type="radio" name="rating" id="rating8" value="8" required /><label for="rating8" title="8"></label>
+                        <input type="radio" name="rating" id="rating7" value="7" required /><label for="rating7" title="7" class="half"></label>
+                        <input type="radio" name="rating" id="rating6" value="6" required /><label for="rating6" title="6"></label>
+                        <input type="radio" name="rating" id="rating5" value="5" required /><label for="rating5" title="5" class="half"></label>
+                        <input type="radio" name="rating" id="rating4" value="4" required /><label for="rating4" title="4"></label>
+                        <input type="radio" name="rating" id="rating3" value="3" required /><label for="rating3" title="3" class="half"></label>
+                        <input type="radio" name="rating" id="rating2" value="2" required /><label for="rating2" title="2"></label>
+                        <input type="radio" name="rating" id="rating1" value="1" required /><label for="rating1" title="1" class="half"></label>
+
+
+                    </div>
+                </div>
+                <i class="fa-solid fa-face-smile"></i>
+                <input hidden="hidden" name="calificacion" value="{{calificacion}}">
+                <input name="review" type="text" placeholder="Escriba su comentario...">
+                <button name="enviarReview" type="submit" class="btn--3">Comentar</button>
+            </form>
+            {% endif %}
+
+
+        </div>
+    </section>
+    <!--Crear Publicacion Artista-->
+    <section id="section-publicacion" class="section-publicacion">
+        <div class="publicacion-fondo">
+            <div class="publicacion-top">
+                <h1>Crear nueva publicacion</h1>
+                <button onclick="OcultarPublicacion();" class="btn-publicacion-cerrar">X</button>
+            </div>
+            <form action="" method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+                <div class="publicacion-centro">
+                    <!-- <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""> -->
+                    <i class="fa-solid fa-face-smile" id="emoji-post"></i> {{ form.titulo }} {{form.descripcion}}
+                    <!-- <div><span>Tags:</span>{{form.tags}}</div> -->
+                    <div class="form-group">
+                        <!-- <label>Tags</label> -->
+                        <input type="text" data-role="tagsinput" placeholder="Ingresa tus tags!" class="form-control" name="tags">
+                    </div>
+
+                </div>
+                <div class="publicacion-bottom">
+                    <!-- <img src="{% static 'EscalArt/img/fondo-ayuda.jpg' %}" alt=""> -->
+                    <input type="file" id="real-file4" name="publi" hidden="hidden">
+                    <button type="button" class="boton-avatar" id="custom-button4">
+                        <img src="{% static 'escalArt/img/uploadImage.svg' %}" id="imagen-post" alt="">
+                    </button>
+                </div>
+                <div class="publicacion-bottom_2">
+                    <input class="btn--3" type="submit" name="publicar" value="Publicar">
+                    
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--Galeria de fotos-->
+    <span class="linea"></span>
+
+    <main>
+
+        <!--  -->
+
+
+        <section id="galeria">
+            {% for p in posts %} {% if list.idUser == p.idUser.idUser %}
+
+            <a href="{% url 'publicacion' list.username p.idPublicacion %}" name="idPost" id="idPost"><img src="/{{ p.imagen }}" alt="Galeria de imagenes"></a> {% endif %} {% endfor %}
+
+
+
+        </section>
+
+
+        <!--  -->
+    </main>
+
+
+    <script src="{% static 'EscalArt/js/Galeria.js' %}"></script>
+    <script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% include 'escalArt/includes/footer.html' %}
+
+
+
+</body>
+
+
+</html>
+<style>
+    #id_descripcion {
+        padding: 5px 10px;
+        position: relative;
+        width: 60%;
+        border-radius: 10px;
+    }
+    
+    form>a {
+        display: none;
+    }
+    
+    #AlertaOk2,
+    #AlertaOk {
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        position: absolute;
+        bottom: 0;
+        right: 0%;
+        display: none;
+        z-index: 1;
+        border-radius: 5px;
+        border: 1px solid #86C332;
+        padding: 10px;
+    }
+    
+    .AlertaOk2 h1 {
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px 0;
+        width: 100%;
+    }
+    
+    @media (max-width:550px) {
+        #AlertaOk2,
+        #AlertaOk {
+            height: 150px !important;
+        }
+    }
+    
+    .btnHeader {
+        padding: 5px 15px;
+        border: #bfc0c2 solid 2px;
+        color: #474747;
+        background: none;
+        margin: 0 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: 0.5s;
+        position: absolute;
+        top: 70%;
+    }
+    
+    .btnHeader::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: auto;
+        background-color: #0077CC;
+        transition: all 500ms ease;
+        z-index: -1;
+    }
+    
+    .btnPfp {
+        padding: 5px 15px;
+        border: #bfc0c2 solid 2px;
+        color: #1a1919;
+        background: none;
+        margin: 0 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: 0.5s;
+    }
+    
+    .btnPfp::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: auto;
+        background-color: #0077CC;
+        transition: all 500ms ease;
+        z-index: -1;
+    }
+    
+    .publicacion-top {
+        margin-top: -1px;
+        border-radius: 14px 14px 0 0;
+    }
+    
+    #emoji-post {
+        position: absolute;
+        margin-left: 13%;
+        top: 180px;
+    }
+    
+    #titulo-post {
+        position: flex;
+        top: 40px;
+        left: 25%;
+        text-align: center;
+    }
+    
+    #descripcion-post {
+        position: flex;
+        resize: none;
+        height: 6em;
+        top: 100px;
+        left: 20%;
+    }
+    
+    #imagen-post {
+        margin-bottom: 0;
+    }
+    
+    #id_tags {
+        position: inherit;
+        margin-top: 60px;
+        margin-left: 20%;
+    }
+    /* ------ */
+    
+    .publicacion-bottom {
+        position: relative;
+    }
+    
+    .boton-avatar img {
+        position: absolute;
+    }
+</style>
+<script>
+    function AbrirPubli() {
+        document.getElementById('contenedor-principal').style.display = 'flex';
+    }
+
+    function MostrarAlerta() {
+        document.getElementById('AlertaOk').style.display = 'block';
+    }
+
+    function OcultarAlerta() {
+        document.getElementById('AlertaOk').style.display = 'none';
+    }
+
+    function MostrarAlerta2() {
+        document.getElementById('AlertaOk2').style.display = 'block';
+    }
+
+    function OcultarAlerta2() {
+        document.getElementById('AlertaOk2').style.display = 'none';
+    }
+
+    const realFileBtn = document.getElementById("real-file");
+    const CustomBtn = document.getElementById("custom-button");
+    const realFileBtn2 = document.getElementById("real-file2");
+    const CustomBtn2 = document.getElementById("custom-button2");
+    const realFileBtn3 = document.getElementById("real-file3");
+    const CustomBtn3 = document.getElementById("custom-button3");
+    const realFileBtn4 = document.getElementById("real-file4");
+    const CustomBtn4 = document.getElementById("custom-button4");
+
+    CustomBtn.addEventListener("click", function() {
+        realFileBtn.click();
+    });
+    CustomBtn2.addEventListener("click", function() {
+        realFileBtn2.click();
+    });
+    CustomBtn3.addEventListener("click", function() {
+        realFileBtn3.click();
+    });
+
+    CustomBtn4.addEventListener("click", function() {
+        realFileBtn4.click();
+    });
+    var clicked = false;
+
+    function mostrarConfig() {
+        if (clicked) {
+            document.getElementById('Configuracion').style.display = 'none';
+            clicked = false;
+        } else {
+            document.getElementById('Configuracion').style.display = 'flex';
+            clicked = true;
+        }
+
+    }
+</script>

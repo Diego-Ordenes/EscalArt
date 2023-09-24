@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuracion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/configuracion.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <!--Header-->
+    {% include 'escalArt/includes/menu.html' %}
+    <div class="scrol"></div>
+    <div class="configuracion">
+        <div class="config-left">
+
+        </div>
+        <!--Configuracion-->
+
+        <div class="config-right">
+
+            <div class="Editar-perfil Editar-perfil-Artista" id="Editar-perfil">
+                <div class="title-H">
+
+                    <h1>Contraseña actualizada correctamente</h1>
+
+
+                </div>
+
+                <form action="">
+                    <p>
+                        <label>Tu contraseña ha sido actualizada. Para volver a la pagina has click en los links de abajo.</label>
+                    </p>
+
+
+
+                    <div class="editar-perfil-btn">
+                        <a href="{% url 'home' %}"><button  type="button" class="btn-form" name="editarPerfil">Volver al Home
+                        </button></a>
+                    </div>
+                    <div class="editar-perfil-btn">
+                        <a href="{% url 'configuracion' %}"><button  type="button" class="btn-form" name="editarPerfil">Volver a Configuraciones
+                        </button></a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--Pie de la pagina-->
+    {% include 'escalArt/includes/footer.html' %}
+
+
+    <script src="{% static 'EscalArt/js/configuracion.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Menu toggle -->
+    <script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+</body>
+
+
+</html>

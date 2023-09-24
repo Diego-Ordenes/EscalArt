@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300;400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.body-card {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f2;
+}
+
+.section-card {
+    position: relative;
+    height: 450px;
+    width: 1075px;
+    display: flex;
+    align-items: center;
+}
+
+.swiper {
+    width: 950px;
+}
+
+.section-card .card .image {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    padding: 3px;
+    background: #86C332;
+}
+
+.section-card .card .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.card {
+    position: relative;
+    border-radius: 20px;
+    background: #fff;
+    margin: 20px 0;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    background: #86C332;
+    border-radius: 20px 20px 0 0;
+}
+
+.card .card-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+
+.card .media-icons {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .media-icons i {
+    margin-top: 10px;
+    color: #fff;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card .media-icons i:hover {
+    opacity: 1;
+}
+
+.card .name-profession {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+.name-profession .name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.name-profession .profession {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.card .rating {
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.card .rating i {
+    color: #f8e009;
+    font-size: 18px;
+    margin: 0 2px;
+}
+
+.card .button-card {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card .button-card button {
+    background: #86C332;
+    outline: none;
+    border: none;
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.button-card button:hover {
+    background: #719C35;
+}
+
+.swiper-pagination-bullet {
+    height: 7px;
+    width: 26px;
+    border-radius: 25px;
+    background: #719C35;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    opacity: 0.7;
+    color: #2d2d22;
+    transition: all 0.3 ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 0.7;
+    color: #2d2d22;
+}

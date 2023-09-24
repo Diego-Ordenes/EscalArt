@@ -1,0 +1,68 @@
+.empty-saves {
+    text-align: center;
+    width: 100vw;
+}
+
+.no-posts {
+    grid-template-columns: none;
+}
+
+.search-box button {
+    margin-top: 0px;
+}
+
+.users {
+    height: 200px;
+    margin: 5px 20px;
+    padding: initial;
+}
+
+#nombre {
+    color: black;
+    margin-bottom: 0px;
+}
+
+.nickname {
+    color: gray;
+    padding: 0px 20px 20px 20px;
+}
+
+.ctn-post {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.galeria-search {
+    justify-content: center;
+}
+
+.div-empty {
+    text-align: center;
+}
+
+.todos-user-search {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25% 25% 25% 25%);
+    margin: auto;
+}
+
+@media (max-width:750px) {
+    .post-search {
+        margin: 0 20px;
+    }
+    .todos-user-search {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 100%);
+        width: 100%;
+        margin: auto;
+    }
+    .ctn-post {
+        text-align: center;
+        margin: 0;
+    }
+}
+
+#no-decoration-a {
+    text-decoration: none;
+    color: #000000;
+}

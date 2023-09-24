@@ -1,0 +1,100 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link rel="stylesheet" href="{% static 'EscalArt/css/sobre_nosotros.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+    {% include 'escalArt/includes/menu.html' %}
+    <!--Sobre-Nosotros-->
+    <section class="contenedor-nos sobre-nosotros" id="contenedor-nos sobre-nosotros">
+        <h2 class="titulo">SOBRE NOSOTROS</h2>
+        <div class="contenedor-sobre-nosotros">
+            <img src="{% static 'EscalArt/img/emprendimiento.jpg' %}" alt="" class="imagen-about-us">
+            <div class="contenido-textos">
+                <h3><span>1</span>Inicio</h3>
+
+                <p>La idea de comenzar una pagina de arte nació a través de la problemática que se vive hoy en día respecto a la importancia que se le da al arte. Siempre hemos podido notar que esa importancia es muy poca o casi nula, las personas que se
+                    dedican a esto muy rara vez logran salir adelante y poder mantenerse solo con eso, es por esto que lo que buscamos a través de esta pagina es poder darle a los artistas de todo tipo tener un medio adecuado donde poder mostrar su contenido
+                    a las demás personas, y poder al mismo tiempo ofrecer un medio donde poder organizar y comentar sus trabajos y comisiones con los clientes, sera un medio únicamente y especializado para que el arte tome importancia y pueda la gente
+                    salir adelante en lo que mas desean hacer</p>
+                <h3><span>2</span>Ahora</h3>
+
+                <p>Hoy en día somos una página comprometida con la experiencia de nuestros usuarios que busca poder ayudar y apoyar a nuestros artistas en todos los aspectos posibles, poco a poco la página adquiere nuevos requerimientos y mejoras, dando
+                    un servicio cada vez mas completo y satisfactorio. Día a día la cantidad de artistas que se unen a nosotros para intentar emprender en Escalart son mas y esperamos seguir cumpliendo con nuestro objetivo que es sacarlos adelante a aquellos
+                    que se encuentran sin rumbo.</p>
+            </div>
+
+        </div>
+    </section>
+    <div class="scrol"></div>
+    <div class="title-creadores">
+        <h2 class="titulo">Creadores/Fundadores</h2>
+    </div>
+    <div class="container-perfiles">
+        <div class="img-cont-perfiles">
+            <div class="img img-1"></div>
+            <div class="info-perfiles">
+                <h2>Isadora Robinson</h2>
+
+            </div>
+            <div class="social-perfil">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="https://github.com/DiegoOrdenes/EscalArt"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="img-cont-perfiles">
+            <div class="img img-2"></div>
+            <div class="info-perfiles">
+                <h2>Fabian Zambrano</h2>
+
+            </div>
+            <div class="social-perfil">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="https://github.com/DiegoOrdenes/EscalArt"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="img-cont-perfiles">
+            <div class="img img-3"></div>
+            <div class="info-perfiles">
+                <h2>Diego Ordenes</h2>
+
+            </div>
+            <div class="social-perfil">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="https://github.com/DiegoOrdenes/EscalArt"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% include 'escalArt/includes/footer.html' %}
+
+</body>
+<script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+
+</html>

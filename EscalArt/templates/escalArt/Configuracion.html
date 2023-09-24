@@ -1,0 +1,438 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuracion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/configuracion.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <!--Header-->
+    {% include 'escalArt/includes/menu.html' %}
+    <div class="scrol"></div>
+
+    <!--Configuracion-->
+    <div style="background: linear-gradient(#04538B, transparent) !important;">
+        <div class="configuracion">
+            <div class="config-left">
+                <div class="config-lista">
+                    <nav>
+                        <input type="checkbox" id="check">
+                        <label for="check" class="check-btn">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                        <ul>
+                            <li><a href="{% url 'configuracion' %}">Editar Perfil</a></li>
+                            <li><a href="{% url 'cambiar_pass' %}">Cambiar Contraseña</a> </li>
+                            <li style="display: none;">Editar Perfil</li>
+                            <li style="display: none;">Cambiar Contraseña</li>
+                            <li onclick="seguridad();">Seguridad</li>
+                            <li onclick="privacidad();">Privacidad</li>
+                            <li onclick="Notificaciones();">Notificaciones</li>
+                            <li onclick="accesibilidad();">Accesibilidad</li>
+
+                            {% if usuario.tipoCuenta.tipoCuenta == "artista" %}
+                            <li onclick="Categoria_Artista();">Categoria</li>
+                            {% endif %} {% if usuario.tipoCuenta.tipoCuenta == "cliente" %}
+
+                            <li onclick="cambiar_cuenta();" class="li-profesional">Cambiar una cuenta Profesional</li>
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="config-right">
+                {%block content%}
+                <div class="Editar-perfil Editar-perfil-Artista" id="Editar-perfil">
+                    <div class="title-U">
+
+                        {% if usuario.imagen %}
+                        <img src="/{{usuario.imagen}}" alt=""> {% else %}
+                        <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt=""> {% endif %}
+
+                        <h1>{{usuario.nombre}}</h1>
+                        <span>@{{usuario.username}}</span> <span>| {{usuario.email}}</span><br>
+
+                        <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                            <input type="file" value="Cambiar Foto de perfil" style="color: #474747" name="pfp">
+                            <input type="hidden" name="next" value="{{request.path}}">
+
+                            </input>
+                            <button style="background-color:transparent; border:none;box-shadow:none;" type="submit" name="editPfp"><a >Cambiar Foto de perfil</a></button>
+
+                        </form>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p>
+                            <label>Nombre</label>
+                            <input type="text" name="nombre"></input>
+                        </p>
+                        <p>
+                            <label>Username</label>
+                            <input type="text" name="username"></input>
+                        </p>
+                        <p>
+                            <label>Email</label>
+                            <input type="Email" name="email"></input>
+                        </p>
+                        <input type="hidden" name="next" value="{{request.path}}">
+
+
+                        <div class="editar-perfil-btn">
+                            <button type="submit" class="btn-form btn--3" name="editarPerfil">Guardar cambios</button>
+                        </div>
+                    </form>
+                    {% if usuario.tipoCuenta.tipoCuenta == "artista" %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p>
+                            <label>Biografia</label>
+                            <textarea type="Email" name="biografia"></textarea>
+                        </p>
+
+                        <input type="hidden" name="next" value="{{request.path}}">
+
+
+                        <div class="editar-perfil-btn" tyle="margin-top: 20px;">
+                            <button type="submit" class="btn-form btn--3" name="editarBio">Guardar cambios</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                    <!--  -->
+                    {% if usuario.tipoCuenta.tipoCuenta == "cliente" %}
+                    <div class="title-bottom">
+                        <p>Si eres o estas buscando emprender como artista cambia a una cuenta profesional para asi poder disfrutar de todas las funcionalidades de la página</p>
+                        <div class="editar-perfil-btn" s>
+                            <button type="submit" class="btn-form btn--3"><a href="#"></a>Cambiar a cuenta profesional</button>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!--  -->
+                    {% if usuario.tipoCuenta.tipoCuenta == "artista" %}
+                    <div class="edit-artista-bottom">
+                        <div class="botom-2">
+                            <input type="checkbox" id="btn-switch"></input>
+                            <label for="btn-switch" class="lbl-switch"></label>
+                        </div>
+                        <h1>Cuenta Privada</h1>
+                        <p>Activar/Desactivar cuenta privada</p>
+                    </div>
+                    {%endif%}
+                </div>
+                <div class="Editar-perfil-Artista" id="Editar-perfil-Artista" style="display: none;">
+                    <div class="title-U">
+                        <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">
+                        <h1>[UserNameArtista]</h1>
+                        <a href="">Cambiar Foto de perfil</a>
+                    </div>
+                    <form action="">
+                        <p>
+                            <label>Nombre</label>
+                            <input type="text"></input>
+                        </p>
+                        <p>
+                            <label>Username</label>
+                            <input type="text"></input>
+                        </p>
+                        <p>
+                            <label>Email</label>
+                            <input type="Email"></input>
+                        </p>
+                        <p>
+                            <label>Biografia</label>
+                            <textarea type="Email"></textarea>
+                        </p>
+                        <div class="editar-perfil-btn">
+                            <button type="submit" class="btn-form btn--3"><a href="#"></a>Guardar cambios</button>
+                        </div>
+                    </form>
+                    <div class="edit-artista-bottom">
+                        <div class="botom-2">
+                            <input type="checkbox" id="btn-switch"></input>
+                            <label for="btn-switch" class="lbl-switch"></label>
+                        </div>
+                        <h1>Cuenta Privada</h1>
+                        <p>Activar/Desactivar cuenta privada</p>
+                    </div>
+                </div>
+                <div class="Cambiar-pass" id="Cambiar-pass" style="display: none;">
+                    <div class="title-H">
+                        <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">
+                        <h1>{{usuario.nombre}}</h1>
+                    </div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p>
+                            <label>Contraseña Antigua</label>
+                            <input type="password" name="old_password"></input>
+                        </p>
+                        <p>
+                            <label>Nueva Contraseña</label>
+                            <input type="password" name="new_password1"></input>
+                        </p>
+                        <p>
+                            <label>Repetir nueva contraseña</label>
+                            <input type="password" name="new_password2"></input>
+                        </p>
+                        <div class="editar-perfil-btn">
+                            <button type="submit" class="btn-form btn--3">Guardar cambios</button>
+                            <p>¿Olvidaste tu contraseña? <a href="{% url 'reset_password' %}">Click Aqui</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="seguridad" id="seguridad" style="display: none;">
+                    <div class="title-s">
+                        <h1>Seguridad</h1>
+                        <p>Aqui podras administrar la seguridad de tu cuenta.</p>
+                    </div>
+                    <div class="title-s">
+                        <h1>Autenticación en dos fases</h1>
+                        <p>Ayuda a proteger tu cuenta contra el acceso no autorizado utilizando un segundo método de autenticacion, además de tu contraseña. Puedes elefir entre un mensaje de texto, una app de autenticacion o una llave de seguridad.
+                        </p>
+                        <div class="seguridad-btn">
+                            <button class="btn-seguridad"><a href="#"></a>Autenticacion en dos fases</button>
+                        </div>
+                    </div>
+                    <div class="title-s">
+                        <h1>Proteccion con contraseña adicional</h1>
+                        <p>Activar esta configuracion aumenta la seguridad de tu cuenta, ya que se solicitara información adicional para restablecer tu contraseña. Si la activas, debes proporcionar el numero de telefono o la direccion de correo electrónico
+                            asociada a tu cuenta para pode restablecer tu contraseña.</p>
+                        <div class="seguridad-btn">
+                            <button class="btn-seguridad"><a href="#"></a>Proteccíon de restablecimiento de la contraseña</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="privacidad" id="privacidad" style="display: none;">
+                    <div class="priv-s">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-volume-xmark"></i>
+                                <h1>Silenciar y bloquear</h1>
+                                <span>></span>
+                                <p>Administra las cuentas, palabras y notificaciones que silenciaste o bloqueaste.</p>
+
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-square-envelope"></i>
+                                <h1>Mensajes Directos</h1>
+                                <span>></span>
+                                <p>Administra quiénes pueden enviarte Mensajes Directamente.
+                                </p>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-book-open"></i>
+                                <h1>Contenido que ves</h1>
+                                <span>></span>
+                                <p>Decid qué ver en función de los temas e intereses de tu preferencia</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="Notificaciones" id="Notificaciones" style="display: none;">
+                    <div class="title-n">
+                        <div class="botom">
+                            <input type="checkbox" id="btn-switch"></input>
+                            <label for="btn-switch" class="lbl-switch"></label>
+                        </div>
+                        <h1>Notificaciones de correo electronico</h1>
+                        <p>Recibe correos electrónicos para enterarte de lo que está pasando cuando no estás conectado. Puedes Activarlos y desactivarlos cuando quieras.</p>
+                    </div>
+                    <div class="title-n_2">
+                        <h1>En Relacion contigo</h1>
+                        <ul>
+                            <li>
+                                <span>Notificaciones nuevas</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Mensajes directos</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Actualizaciones del Estado de tus comisiones</span>
+                                <input type="checkbox"></input>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accesibilidad" id="accesibilidad" style="display: none;">
+                    <div class="priv-a">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-eye-slash"></i>
+                                <h1>Accesibilidad</h1>
+                                <span>></span>
+                                <p>Administra diversos aspectos de tu experiencia, como limitar el contraste de colores y el movimiento.</p>
+
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <h1>Apariencia</h1>
+                                <span>></span>
+                                <p>Administra el fondo, color y tamaño de la fuente
+                                </p>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-earth-americas"></i>
+                                <h1>Idioma</h1>
+                                <span>></span>
+                                <p>Administra qué idiomas se usan para personalizar tu experiencia en la pagina</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="Categoria-Artista" id="Categoria-Artista" style="display: none;">
+                    <div class="title-select">
+                        <h1>Selecciona una Categoría</h1>
+                        <p>Puedes cambiar la categoria que se te adapta mejor a tu estilo de trabajo, Tendras opcion para poder mostrar o no esta informacion en tu perfil.</p>
+                    </div>
+                    <form method="GET" class="buscar-categoria" action=" {% url 'buscar-categoria' %}">
+                        <input name="query" value="{{request.GET.query}}" type="text" placeholder="Buscando..." class="form-control" aria-describedby="basic-addon1">
+                        <button type="submit" class="icon searchCategoria">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    </form>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="mostrar-categoria">
+
+                            {% if perfil.showTags == True %}
+                            <input type="checkbox" name="showTags" checked></input>
+                            {% else %}
+                            <input type="checkbox" name="showTags"></input>
+
+                            {% endif %}
+
+                            <span>Mostrar Categoría en el perfil</span>
+                        </div>
+                        <!-- <div class="buscar-categoria">
+                        <input type="text" placeholder="Buscar..."></input>
+                    </div> -->
+
+                        <div class="title-categoria">
+                            <h1>Sugerencias</h1>
+                            <ul>
+                                {% for tags in perfil.tags.all %} {% for tag in common_tags %} {% if tags == tag %}
+                                <li>
+                                    <span>{{tag}}</span>
+                                    <input type="checkbox" name="tags" value="{{tag}}" checked></input>
+                                </li>
+                                {%endif%} {% endfor %} {%endfor%} {% for Notag in Notags%}
+                                <li>
+                                    <span>{{Notag}}</span>
+                                    <input type="checkbox" name="tags" value="{{Notag}}"></input>
+                                </li>
+                                {%endfor%}
+
+
+
+                                <input type="hidden" name="next" value="{{request.path}}">
+
+                                <!-- <li>
+                                <span>Ilustracion</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Esculturas</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Realismo</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Fotografia</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Animacion 3D</span>
+                                <input type="checkbox"></input>
+                            </li>
+                            <li>
+                                <span>Otro</span>
+                                <input type="checkbox"></input>
+                            </li> -->
+
+
+
+
+
+
+                            </ul>
+                            <span class="linea--"></span>
+                            <div class="editar-perfil-btn" style="margin-top: 20px;">
+                                <button type="submit" class="btn-form btn--3" name="editTags">Guardar cambios</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="Categoria-Artista cambiar-cuenta" id="cambiar-cuenta" style="display: none;">
+                    <div class="title-select">
+                        <h1>Cambiar a cuenta profesional</h1>
+                        <p>Al cambiar a una cuenta profesional podrás disfrutar de todas las funcionalidades que les ofrecemos a nuestros emprendedores! Podrás compartir tu trabajo mediante publicaciones y tu perfil será público para todos los usuarios de
+                            nuestra página web. Tambien podrás disfrutar de funcionalidades que te ayudarán a organizar mejor tu trabajo y conexion con tus clientes en un solo lugar!
+                        </p>
+                        <p style="text-align: center; color: #0099CC;">¡Cambiate Ya!</p>
+                    </div>
+                    <span class="linea--"></span>
+
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="tipoCuenta" value="2" hidden>
+                        <input type="hidden" name="next" value="{{request.path}}">
+
+                        <div class="editar-perfil-btn">
+                            <button type="submit" class="btn-form btn--3" name="profesional">Cambiar a Cuenta profesional</button>
+                        </div>
+
+                    </form>
+
+                </div>
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--Pie de la pagina-->
+    {% include 'escalArt/includes/footer.html' %}
+
+
+    <script src="{% static 'EscalArt/js/configuracion.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Menu toggle -->
+    <script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,132 @@
+/* ESTILOS DE SLIDER */
+
+.container-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    width: 400%;
+    height: 400px;
+    margin-left: -100%;
+    position: relative;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
+
+.slider__section {
+    width: 100%;
+    position: relative;
+}
+
+.slider__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider__btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: monospace;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.slider__btn:hover {
+    background: #fff;
+}
+
+.slider__btn--left {
+    left: 10px;
+}
+
+.slider__btn--right {
+    right: 10px;
+}
+
+.slider__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    text-align: center;
+    z-index: 999;
+}
+
+.slider__title {
+    font-size: 2.2em;
+    margin: 0;
+}
+
+.slider__txt {
+    margin: 5px 0;
+}
+
+.slider__content a button {
+    position: relative;
+    /* display: block; */
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #04538B;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.slider__content a button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #0077CC;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn---3:hover {
+    animation: shadow-pulse 1000ms 1;
+    background-color: #0077CC;
+    color: #fff;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 #0077CC;
+    }
+    100% {
+        box-shadow: 0 0 8px 16px rgba(32, 226, 215, 0);
+    }
+}

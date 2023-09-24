@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EscalArt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/presentacion.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <!--Header-->
+    {% include 'escalArt/includes/menu.html' %}
+
+    <div class="scrol"></div>
+    <!--Cartas de presentacion-->
+    <!-- <div class="body-card">
+        <section class="section-card">
+            <div class=" swiper mySwiper container-card">
+                <div class=" swiper-wrapper content">
+                    <div class=" swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="{% static 'EscalArt/img/card-1.jpg' %}" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[Nombre Artista]</span>
+                                <span class="profession">[username]</span>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <div class="button-card">
+                                <button class="follow-me">Follow me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="{% static 'EscalArt/img/card-1.jpg' %}" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[Nombre Artista]</span>
+                                <span class="profession">[Username]</span>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <div class="button-card">
+                                <button class="follow-me">Follow me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="{% static 'EscalArt/img/card-1.jpg' %}" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[Nombre Artista]</span>
+                                <span class="profession">[Username]</span>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <div class="button-card">
+                                <button class="follow-me">Follow me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="{% static 'EscalArt/img/card-1.jpg' %}" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[Nombre Artista]</span>
+                                <span class="profession">[Username]</span>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <div class="button-card">
+                                <button class="follow-me">Follow me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="{% static 'EscalArt/img/card-1.jpg' %}" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[Nombre Artista]</span>
+                                <span class="profession">[Username]</span>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <div class="button-card">
+                                <button class="follow-me">Follow me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="{% static 'EscalArt/img/card-1.jpg' %}" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[Nombre Artista]</span>
+                                <span class="profession">[Username]</span>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <div class="button-card">
+                                <button class="follow-me">Follow me</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </section>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+    <!--Pie de la pagina-->
+    {% include 'escalArt/includes/footer.html' %}
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</html>

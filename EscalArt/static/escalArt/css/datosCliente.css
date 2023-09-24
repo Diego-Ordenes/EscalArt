@@ -1,0 +1,1413 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #F5F5F5;
+}
+
+.Configuracion {
+    position: flex;
+    width: 210px;
+    height: 216px;
+    background-color: #fff;
+    z-index: 20;
+    display: none;
+}
+
+.lista-info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista-info .lista-li {
+    float: left;
+    display: block;
+    padding: 5px 50px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.texto-bio {
+    text-align: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* .seccion-perfil-usuario {
+    margin-top: -100px;
+} */
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#04538B, transparent) !important;
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    border-radius: 100%;
+    width: 90%;
+    height: 17rem;
+    background-image: linear-gradient(45deg, #BC3CFF, #317FFF);
+    border-radius: 0 0 20px 20px;
+    /*
+background-image: url('http://localhost/multimedia/png/user-portada-3.png');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+*/
+}
+
+.perfil-usuario-portada_2 {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    height: 17rem;
+    border-radius: 0 0 20px 20px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
+    margin-right: 1rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 90px);
+    z-index: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo_2 {
+    display: block;
+    width: 100%;
+    font-size: 1.25em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    padding: 30px 0px 30px 0px;
+    color: #848484;
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio {
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-datos {
+    width: 50%;
+    list-style: none;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+    padding: 5px 0;
+}
+
+.seccion-perfil-usuario .lista-datos li>.icono {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.seccion-perfil-usuario .redes-sociales {
+    position: absolute;
+    right: calc(0px - 50px - 1rem);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes {
+    border: 0;
+    background-color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    font-size: 1.3rem;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
+    margin-top: .5rem;
+}
+
+.seccion-perfil-usuario .boton-redes.facebook {
+    background-color: #5955FF;
+}
+
+.seccion-perfil-usuario .boton-redes.twitter {
+    background-color: #35E1BF;
+}
+
+.seccion-perfil-usuario .boton-redes.instagram {
+    background: linear-gradient(45deg, #FF2DFD, #40A7FF);
+}
+
+
+/*   Galeria de fotos  */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /*line-height: 1, 6;*/
+}
+
+
+/*
+#galeria {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+/*grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+grid-gap: 2px;
+padding: 0 10px;
+}
+
+#galeria img {
+width: 100%;
+height: auto;
+border-radius: 5px;
+cursor: pointer;
+}
+*/
+
+#galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    width: 95%;
+    margin: auto;
+    gap: 15px;
+    overflow: hidden;
+    padding: 40px 0;
+}
+
+#galeria img {
+    width: 430px;
+    vertical-align: top;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s;
+    border-radius: 15px;
+}
+
+@media (max-width:1350px) {
+    #galeria img {
+        width: 370px;
+    }
+}
+
+#galeria>img {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+}
+
+@media (max-width:750px) {
+    #galeria img {
+        width: 100%;
+    }
+}
+
+
+/*
+#galeria img:hover {
+filter: blur(2px);
+transform: rotate(10deg) scale(1);
+}*/
+
+#galeria img:hover {
+    animation: pulsate 1s ease-in-out;
+    top: -10px;
+    filter: blur(px);
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 25px #475f25, 0 0 50px #86C332;
+    }
+}
+
+#img-activa {
+    width: 100%;
+    height: auto;
+}
+
+.linea {
+    background: #B8B8B8;
+    height: 5px;
+    width: 100%;
+    display: block;
+}
+
+
+/*Contenedor principal del lightbox*/
+
+#contenedor-principal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: none;
+    /*Cambiar a none para ver*/
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+#contenedor-interno {
+    width: 1000px;
+    height: 600px;
+    border: 2px #f3f3f3 solid;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+/*Botones*/
+
+button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #86C332;
+}
+
+.button-cierra {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #AB3849;
+}
+
+#btn-cierra {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 3rem;
+    margin: 20px 230px 0px 0px;
+    border-radius: 50% #fff;
+    height: 30px;
+    width: 30px;
+}
+
+#btn-retrocede {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 4rem;
+    margin-left: 200px;
+}
+
+#btn-adelanta {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    font-size: 4rem;
+    margin-right: 200px;
+}
+
+
+/*Caja de Calificacion*/
+
+
+/* calificacion */
+
+.calificacion-principal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: auto;
+}
+
+.calificacion-interno {
+    width: 700px;
+    height: 600px;
+    border: 5px #f3f3f3 solid;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #f3f3f3;
+}
+
+#btn-calif-cierra {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+}
+
+#calif {
+    display: none;
+}
+
+
+/*------*/
+
+.testimonials-background {
+    border: 5px #f3f3f3 solid;
+    position: relative;
+    background-color: #f3f3f3;
+    justify-content: center;
+}
+
+#testimonials {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 4;
+    margin: 20px 0px 20px 0px;
+}
+
+.testimonial-heading {
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #12130F;
+}
+
+.testimonial-heading h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 10px 20px;
+}
+
+.testimonial-heading span {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.testimonial-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.testimonials-box {
+    width: 500px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin: 1.5px;
+    cursor: pointer;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.name-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-user strong {
+    color: #3d3d3d;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.name-user span {
+    color: #979797;
+    font-size: 0.8rem;
+}
+
+.reviews {
+    color: #f9d71c;
+}
+
+.box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.client-comment p {
+    font-size: 0.9rem;
+    color: #4b4b4b;
+}
+
+
+/*------------------- Publicacion -----------------------*/
+
+.publicacion-fondo {
+    border: 2px #f3f3f3 solid;
+    border-radius: 10px;
+    background-color: #ffffff;
+    justify-content: center;
+    height: 75%;
+    width: 35%;
+    position: fixed;
+    z-index: 10;
+    bottom: 10%;
+}
+
+.section-publicacion {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.0);
+    padding: 4;
+    margin: 20px 0px 20px 0px;
+}
+
+.publicacion-top {
+    text-align: center;
+    justify-content: center;
+    background-color: #12130F;
+    font-size: 1rem;
+    color: #fff;
+    height: 50px;
+    padding: 7px 0 0 0;
+}
+
+.publicacion-bottom {
+    background-color: #12130F;
+    height: 50px;
+}
+
+
+/*1 ves*/
+
+.testimonial-box:hover {
+    transform: translateY(-10px);
+}
+
+@media (max-width:1060px) {
+    .testimonial-box {
+        width: 45%;
+        padding: 10px;
+    }
+}
+
+@media(max-width:790px) {
+    .testimonial-box {
+        width: 100%;
+    }
+    .testimonial-heading h1 {
+        font-size: 1.4rem;
+    }
+}
+
+@media(max-width:340px) {
+    .box-top {
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    .reviews {
+        margin-top: 10px;
+    }
+}
+
+ ::selection {
+    color: #ffffff;
+    background-color: #252525;
+}
+
+
+/* adactacion a dispositivos */
+
+@media screen and (max-width:500px) {
+    .galeria {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .close {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    .seccion-perfil-usuario .lista-datos {
+        width: 100%;
+    }
+    .seccion-perfil-usuario .perfil-usuario-portada,
+    .seccion-perfil-usuario .perfil-usuario-body {
+        width: 95%;
+    }
+    .seccion-perfil-usuario .redes-sociales {
+        position: relative;
+        flex-direction: row;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        align-items: center;
+        justify-content: center
+    }
+    .seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
+        margin-left: 1rem;
+        margin-top: 0;
+    }
+    .lista-info .lista-li {
+        padding: 0px 5px 0px 10px;
+    }
+    #btn-retrocede {
+        font-size: 4rem;
+        left: -40%;
+        top: 47%;
+    }
+    #btn-adelanta {
+        font-size: 4rem;
+        left: 90%;
+        top: 45%;
+    }
+    #btn-cierra {
+        left: 83%;
+        position: absolute;
+        top: 14%;
+        font-size: 2.5rem;
+    }
+    #img-activa {
+        margin: 0px 15px 0px 15px;
+        height: 340px;
+        width: 380px;
+        object-fit: cover;
+    }
+}
+
+.perfil-usuario-bio .linea_2 {
+    height: 2px;
+    color: #0099CC;
+    width: 100%;
+}
+
+.linea_2 {
+    background: #0099CC !important;
+    height: 2px;
+    width: 100%;
+    display: block;
+}
+
+
+/*    Parte Superior  */
+
+.cliente-opt {
+    width: 100%;
+}
+
+.cliente-opt ul {
+    text-align: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.cliente-opt ul li {
+    display: inline-block;
+    padding: 0px 50px;
+}
+
+.cliente-opt i {
+    color: #86C332;
+    padding: 0px 10px;
+}
+
+.galeria_guardados {
+    display: flex;
+}
+
+.estado-comision {
+    display: none;
+}
+
+
+/* Estado de Comisiones */
+
+
+/* Artistas*/
+
+.titulo-art h1 {
+    text-align: center;
+    font-size: 2rem;
+    padding: 10px 0px;
+}
+
+.estado-comision {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 10px 0px;
+}
+
+.estado_comision-img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    margin-right: 25px;
+    border: 1px solid rgb(128, 126, 126);
+}
+
+.left {
+    border-right: 2px solid #000;
+}
+
+.estado-comision-lista ul {
+    text-align: center;
+    padding: 10px;
+}
+
+.estado-comision-lista ul li {
+    list-style: none;
+    padding: 15px 5px 15px 5px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+
+/* Estado de Comision */
+
+.comisiones ul {
+    text-align: center;
+    padding: 10px;
+}
+
+.comisiones {
+    position: relative;
+}
+
+.right {
+    justify-content: center;
+    text-align: center;
+}
+
+.comisiones ul li {
+    display: inline-block;
+    list-style: none;
+    padding: 50px;
+    position: relative;
+}
+
+.comisiones ul li i {
+    font-size: 100px;
+    border: 3px solid #474747;
+    border-radius: 50%;
+    padding: 25px;
+    color: #6c9e25;
+    z-index: 5;
+}
+
+.comisiones ul li input {
+    height: 30px;
+    width: 30px;
+}
+
+.comisiones p {
+    font-size: 1.5rem;
+    padding: 15px 0px;
+}
+
+.comisiones ul li .span-left {
+    height: 10px;
+    background: #86C332;
+    width: 30.5%;
+    display: block;
+    z-index: -1;
+    margin-bottom: 50px;
+    position: absolute;
+    right: 0;
+    bottom: 44%;
+}
+
+.comisiones ul li .span-centro {
+    height: 10px;
+    background: #86C332;
+    width: 31.5%;
+    display: block;
+    z-index: -1;
+    margin-bottom: 50px;
+    position: absolute;
+    right: 0;
+    bottom: 44%;
+}
+
+.comisiones ul li .span-centro_2 {
+    height: 10px;
+    background: #86C332;
+    width: 31.5%;
+    display: block;
+    z-index: -1;
+    margin-bottom: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 44%;
+}
+
+.comisiones ul li .span-right {
+    height: 10px;
+    background: #86C332;
+    width: 29%;
+    display: block;
+    z-index: -1;
+    margin-bottom: 50px;
+    position: absolute;
+    left: 0;
+    bottom: 44%;
+}
+.crear-comision-btn{
+    position: absolute;
+    /* display: block; */
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #474747;
+    font-size: 0.95rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #434343;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    top: 15px;
+    right: 5px;
+}
+.editar-estado-btn{
+    /* position: relative; */
+    /* display: block; */
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #474747;
+    font-size: 0.9rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #434343;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    /* margin: auto; */
+}
+@media (max-width:700px){
+    .crear-comision-btn{
+        top: 50%;
+        margin: 0 37%;
+    }
+    .seccion-perfil-usuario .perfil-usuario-bio{
+        height: 20vh;
+    }
+}
+@media (max-width:575px){
+    .crear-comision-btn{
+        top: 50%;
+        margin: 0 35%;
+    }
+}
+@media (max-width:450px){
+    .crear-comision-btn{
+        top: 50%;
+        margin: 0 30%;
+    }
+}
+@media (max-width:390px){
+    .crear-comision-btn{
+        top: 50%;
+        margin: 0 28%;
+        font-size: 0.7rem;
+    }
+}
+
+
+
+/* Creacion de Tareas */
+
+:root {
+    --primary: #A5C882;
+    --secondary: #D33F49;
+    --light: #fff;
+    --dark: #000;
+    --diabled: #e7e7e7;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+
+*:first-letter {
+    text-transform: capitalize;
+}
+
+.roundBorder {
+    border-radius: 5px;
+}
+
+.list {
+    margin: 25px auto;
+    padding: 25px;
+    background-color: var(--light);
+    width: 100%;
+    max-width: 550px;
+    border-radius: 15px;
+    background-color: #fff;
+    max-height: 350px;
+    height: 100%;
+    z-index: 10;
+    Box-shadow: rgb(4 17 29 / 30%) 0px 0px 8px 0px !important;
+}
+
+.title-tarea h1 {
+    font-size: 1.75rem;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dateRight {
+    display: flex;
+    align-items: center;
+}
+
+.dateRight ul {
+    padding: 5px;
+    list-style: none;
+    display: inline-block;
+}
+
+.dateRight ul li {
+    display: inline-block;
+    font-size: 1.3rem;
+}
+
+
+/* #dateNumber {
+    font-size: 25px;
+} */
+
+#dateText {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+#dateMonth,
+#dateNumber,
+#dateText {
+    font-weight: bold;
+    color: #000;
+}
+
+
+/* #dateMonth,
+#dateYear {
+    margin-left: 7px;
+    font-size: 20px;
+} */
+
+#tareas-- form {
+    margin: 20px 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 35px auto;
+    grid-column-gap: 15px;
+}
+
+#tareas-- form input {
+    border: none;
+    padding-left: 10px;
+    background-color: var(--diabled);
+}
+
+input:focus {
+    outline: none;
+}
+
+.addTaskButton,
+.orderButton {
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addTaskButton {
+    height: 35px;
+    font-size: 18px;
+    background-color: #36AE7C;
+    width: 100%;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.orderButton {
+    background: none;
+    border: 2px solid #000;
+    color: #000;
+    cursor: pointer;
+}
+
+.orderButton:hover {
+    background-color: #252525;
+    color: #fff;
+}
+
+.task {
+    background-color: #36AE7C;
+    padding: 15px;
+    margin-top: 15px;
+    color: var(--light);
+    cursor: pointer;
+    position: relative;
+}
+
+.done {
+    background-color: var(--diabled);
+    text-decoration: line-through;
+    color: var(--dark);
+}
+
+
+/* Mostrar la tarea */
+
+.fondo-mostrar-tarea {
+    margin: 15px auto;
+    padding: 25px;
+    background-color: var(--light);
+    width: 100%;
+    max-width: 750px;
+    border-radius: 10px;
+    box-shadow: rgb(4 17 29 / 30%) 0px 0px 8px 0px !important;
+}
+
+.btn-mostrar-tarea {
+    position: relative;
+}
+
+.btn-mostrar-tarea h1 {
+    text-align: center;
+    font-size: 1.75rem;
+    padding: 0px 5px 10px;
+    width: 100%;
+}
+
+.btn-mostrar-tarea button {
+    padding: 10px 15px;
+    width: 180px;
+    margin: 0 10px;
+    background: none;
+    border: 2px solid #000;
+    cursor: pointer;
+    color: #000;
+    border-radius: 5px;
+}
+
+
+/* .btn-mostrar-tarea button {
+    padding: 10px 15px;
+    border-radius: 20px;
+    width: 180px;
+    cursor: pointer;
+    color: #fff;
+    background: #86C332;
+} */
+
+.btn-mostrar-tarea button:hover {
+    background: #2b2b2b;
+    color: #fff;
+}
+
+.Comentar-Usuarios button {
+    padding: 5px 15px;
+    border: #bfc0c2 solid 3px;
+    color: #1a1919;
+    background: none;
+    margin: 15px 10px 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.5s;
+    float: left;
+    position: relative;
+}
+
+.Comentar-Usuarios button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #0077CC;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.Comentar-Usuarios button:hover {
+    background: none;
+    color: #fff;
+}
+
+.btn--3:hover {
+    animation: shadow-pulse 1000ms 1;
+    background-color: #0077CC;
+    color: #fff;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 #0077CC;
+    }
+    100% {
+        box-shadow: 0 0 8px 16px rgba(32, 226, 215, 0);
+    }
+}
+
+
+/*Scroll*/
+
+.scroll-bg {
+    margin: 5px auto;
+    padding-bottom: 5px;
+}
+
+.scroll-div {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.scroll-object {
+    color: #fff;
+}
+@media (max-width:1050px){
+    .cliente-opt ul li{
+        padding: 0 10px;
+    }
+    /* --- Estado comision */
+    .comisiones ul {
+        text-align: center;
+    }
+    .comisiones {
+        position: relative;
+        overflow: hidden;
+    }
+    .comisiones ul li {
+        display: inline-block;
+        list-style: none;
+        padding: 20px 60px 20px 20px;
+        position: relative;
+        margin-left: 230px;
+        width: 100%;
+    }
+    .comisiones ul li i {
+        font-size: 40px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        padding: 20px;
+        color: #6c9e25;
+        z-index: 5;
+        float: left;
+    }
+    .comisiones p {
+        font-size: 1.3rem;
+        padding: 25px 8px;
+        float: left;
+    }
+    .comisiones ul li .span-left {
+        display: none;
+    }
+    .comisiones ul li input {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 0;
+        top: 40%;
+        margin-right: 30px;
+    }
+    .comisiones ul li .span-centro {
+        height: 35%;
+        background: #86C332;
+        width: 5px;
+        display: block;
+        z-index: -1;
+        margin-bottom: 50px;
+        position: absolute;
+        left: 0;
+        bottom: 41%;
+    }
+    .comisiones ul li .span-centro_2 {
+        display: none;
+    }
+    .comisiones ul li .span-right {
+        height: 35%;
+        background: #86C332;
+        width: 5px;
+        display: block;
+        z-index: -1;
+        margin-bottom: 50px;
+        position: absolute;
+        right: 0;
+        bottom: 42%;
+    }
+    .li-left {
+        float: left;
+    }
+    .span-dis {
+        margin-left: 58px;
+    }
+}
+
+@media (max-width:750px) {
+    .estado-comision {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* height: 100%; */
+        margin: 10px 0px;
+    }
+    .estado-comision-lista ul {
+        text-align: center;
+        padding: 10px;
+    }
+    .estado-comision-lista ul li {
+        list-style: none;
+        padding: 10px 0;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+    .cliente-opt ul {
+        text-align: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        padding: 10px 0;
+        cursor: pointer;
+    }
+    .cliente-opt ul li {
+        display: inline-block;
+        padding: 0px 5px;
+    }
+    .cliente-opt i {
+        color: #86C332;
+        padding: 0px 5px;
+    }
+    .left {
+        border-bottom: 2px solid #000;
+        border-right: none;
+    }
+    /* --- Estado comision */
+    .comisiones ul {
+        text-align: center;
+    }
+    .comisiones {
+        position: relative;
+        overflow: hidden;
+    }
+    .comisiones ul li {
+        display: inline-block;
+        list-style: none;
+        padding: 20px 60px 20px 20px;
+        position: relative;
+        margin-left: 0;
+        width: 100%;
+    }
+    .comisiones ul li i {
+        font-size: 25px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        padding: 20px;
+        color: #6c9e25;
+        z-index: 5;
+        float: left;
+    }
+    .comisiones p {
+        font-size: 0.8rem;
+        padding: 25px 8px;
+        float: right;
+    }
+    .comisiones ul li .span-left {
+        display: none;
+    }
+    .comisiones ul li input {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 0;
+        top: 40%;
+        margin-right: 30px;
+    }
+    .comisiones ul li .span-centro {
+        height: 37%;
+        background: #86C332;
+        width: 5px;
+        display: block;
+        z-index: -1;
+        margin-bottom: 50px;
+        position: absolute;
+        left: 0;
+        bottom: 36%;
+    }
+    .comisiones ul li .span-centro_2 {
+        display: none;
+    }
+    .comisiones ul li .span-right {
+        height: 37%;
+        background: #86C332;
+        width: 5px;
+        display: block;
+        z-index: -1;
+        margin-bottom: 50px;
+        position: absolute;
+        right: 0;
+        bottom: 36%;
+    }
+    .li-left {
+        float: left;
+    }
+    .span-dis {
+        margin-left: 50px;
+    }
+}
+@media (max-width:550px){
+    .cliente-opt ul li{
+        padding: 0;
+    }
+    .comisiones p{
+        float: left;
+    }
+}

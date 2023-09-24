@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/home.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/perfil_cliente.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/publicacion.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Header -->
+    {% include 'escalArt/includes/menu.html' %}
+    <div class="scrol"></div>
+
+    {% if userInfo.idUser == user.idUser %}
+
+
+
+
+    <!--Diseño Perfi-->
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <!-- 5 Inicio de for para mostrar los datos en perfil segun el usuario conectado -->
+                {% for perfil in perfil %}
+                <!-- 6 inicio if para identificar perfil segun user -->
+                {% if userInfo.idUser == perfil.idUser.idUser %} {% if perfil.img_header %}<img class="perfil-usuario-portada_2" src="/{{ perfil.img_header }}"> {% else %}
+                <img class="perfil-usuario-portada_2" src="{% static 'EscalArt/img/fondodeterminado.jpg' %}" alt=""> {% endif %}
+
+
+                <!-- 6 FIN if para identificar perfil segun user -->
+                {% endif %}
+                <!-- 5 FIN ciclo for que lista los perfiles -->
+                {% endfor %}
+                <div class="perfil-usuario-avatar">
+
+                    {% if userInfo.imagen %}
+                    <img src="/{{userInfo.imagen}}" class="foto_perfil" alt="">
+                    <!--  -->
+                    {% else %}
+                    <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">
+                    <!--  -->
+                    {% endif %}
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %} {{foto.as_hidden}} <input type="file" id="real-file2" name="pfp" hidden="hidden">
+                        <button type="button" class="boton-avatar" id="custom-button2" onclick="MostrarAlerta();">
+                            <i class="far fa-image"></i>
+                        </button>
+
+                        <div class="div-alerta-img-cli" id="AlertaOk">
+                            <h1>¿Quieres cambiar la imagen?</h1>
+                            <div class="btn-alet-img-cli">
+                                <button onclick="OcultarAlerta();" class="btn-imagen-cli" style="margin-left: 5%;">Cancelar </button>
+                                <button onclick="OcultarAlerta();" class="btn-imagen-cli" type="submit" name="fotoPerfil">Aceptar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <form action="" method="POST" enctype='multipart/form-data'>
+                    {% csrf_token %} {{edit.img_header.as_hidden}}
+                    <input type="file" id="real-file3" name="header" hidden="hidden">
+                    <button type="button" class="boton-portada" id="custom-button3" onclick="MostrarAlerta2();">
+                        <i class="far fa-image"></i> Cambiar fondo
+                    </button>
+
+                    <div class="div-alerta-fondoimg-cli" id="AlertaOk2">
+                        <h1>¿Quieres cambiar el fondo?</h1>
+                        <div class="btn-alert-fondoimg-cli">
+                            <button onclick="OcultarAlerta2();" class="btn-fondoimagen-cli" type="submit" name="EditHeader">Aceptar</button>
+                            <button onclick="OcultarAlerta2();" class="btn-fondoimagen-cli" style="margin-left: 5%;">Cancelar </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo">{{userInfo.username}}</h3>
+                <span class="linea_2"></span>
+            </div>
+        </div>
+    </section>
+    <span class="linea"></span>
+    <div class="cliente-opt">
+        <ul>
+            <li onclick="mostrarGuardados();"><i class="fa-solid fa-bookmark"></i>Guardados</li>
+            <li onclick="mostrarComisiones();"><i class="fa-solid fa-calendar-check" style="color: #36AE7C;"></i>Estado de Comisiones</li>
+            {% if userInfo.tipoCuenta.tipoCuenta == 'artista'%}
+            <li onclick="mostrarComisionesTrabajo();"><i class="fa-solid fa-briefcase" style="color: #926D4F;"></i>Comisiones en las que trabajo</li>
+            {%endif%}
+        </ul>
+    </div>
+    <!--Galeria de fotos-->
+    <section class="galeria_guardados" id="gl-guardados" style="display: none;">
+        <section id="galeria">
+            {% for g in guardados %}
+            <a href="{% url 'publicacion' g.idPublicacion.idUser.username g.idPublicacion.idPublicacion %}" name="idPost" id="idPost"><img src="/{{g.idPublicacion.imagen}}" alt="Galeria de imagenes"></a> {%empty%}
+            <h3 class="empty-saves">No hay publicaciones guardadas</h3>
+            {%endfor%}
+
+
+        </section>
+        <section id="contenedor-principal">
+            <div class="contenedor-interno">
+                <img id="img-activa" src="{% static 'EscalArt/img/foto_1.jpg' %}" alt="Galeria de imagenes">
+                <button id="btn-cierra" type="button" class="button-cierra">X</button>
+                <button id="btn-retrocede" type="button">&lt;</button>
+                <button id="btn-adelanta" type="button">&gt;</button>
+            </div>
+        </section>
+    </section>
+    <!--Estado Comision-->
+    <div class="estado-comision" id="es-comision" style="display: flex;">
+        <div class="left">
+            <div class="titulo-art">
+                <h1>Tus Comisiones</h1>
+            </div>
+            <div class="estado-comision-lista">
+                <ul>
+                    {% for c in comCli %}
+
+                    <li>
+                        <a href="{% url 'estadoComisionCli' request.user.username c.idComision.idComision %}"> Comision {{c.idComision.idComision}} | {{c.idComision.idArtista.username}}</a>
+                    </li>
+                    {%empty%}
+                    <p class="empty-saves">No tienes ninguna comision de momento</p>
+
+
+                    <!-- 13 FIN for para listar comisiones -->
+                    {% endfor %}
+
+
+                    <!-- <li><img class="estado_comision-img" src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">[Nombre Artista]</li>
+                    <li><img class="estado_comision-img" src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">[Nombre Artista]</li>
+                    <li><img class="estado_comision-img" src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">[Nombre Artista]</li>
+                    <li><img class="estado_comision-img" src="{% static 'EscalArt/img/perfil.jpg' %}" alt="">[Nombre Artista]</li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="right" style="width: 80%;">
+            {%block content%}
+            <div class="titulo-art" hidden>
+                <h1>[Nombre Artista]</h1>
+            </div>
+            <div class="comisiones" hidden>
+                <ul>
+                    <li class="li-left"><i class="fa-solid fa-box-archive"></i>
+                        <span class="span-left span-dis"></span>
+                        <p>Tu Comision ha sido recibida</p>
+                    </li>
+                    <li class="li-left"><i class="fa-solid fa-spinner"></i>
+                        <span class="span-centro span-dis"></span>
+                        <p>Tu comision está en desarrollo</p>
+                        <span class="span-centro_2"></span>
+                    </li>
+                    <li class="li-left"><i class="fa-solid fa-paper-plane"></i>
+                        <span class="span-right span-dis"></span>
+                        <p> ¡Tu comisión ya esta lista! </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="comisiones">
+                <ul>
+                    <li class="lif-left">
+                        <h3 class="empty-saves">Elige una comision para revisar su estado!</h3>
+                    </li>
+                </ul>
+
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+    {% comment %} Comisiones en las que trabajo {% endcomment %}
+
+    <div class="div-ec">
+        <div class="estado-comision" id="es-comisiontrabajo" style="display: none;">
+
+            <div class="contenedor_comisiones comisiones_new">
+                {% for ct in comisionTrabajo %}
+                <article class="post users users-ec">
+                    <div class="post-body ">
+                        <div class="post-container">
+                            <a class="column" href="{% url 'estadoComisionArt' ct.comision_cliente_set.all.0.idCliente.username ct.idComision %}">
+                            
+                        {% if ct.comision_cliente_set.all.0.idCliente.imagen %}
+                        <img id="foto-perfil" src="/{{ ct.comision_cliente_set.all.0.idCliente.imagen}}" alt="Galeria de imagenes">
+                            {%else%}
+                            <img src="{% static 'EscalArt/img/perfil.jpg' %}" id="foto-perfil" alt="">
+                        {% endif %}
+                            
+                    </a>
+                            <a style="text-decoration: none;" class="column" href="{% url 'estadoComisionArt' ct.comision_cliente_set.all.0.idCliente.username ct.idComision %}">
+                                <h2 id="nombre">Comision {{ct.idComision}}</h2>
+                                <h3 class="username nickname">Cliente: @{{ct.comision_cliente_set.all.0.idCliente.username}}</h3>
+                            </a>
+                        </div>
+                        <span class="linea_2"></span>
+                        <p style="font-size: 1.5rem; color: #474747;">Estado: {{ct.idEstado.estado}}</p>
+
+                    </div>
+                </article>
+                {%empty%}
+                <h1 class="empty-saves">No estas trabajando en ninguna comision de momento</h1>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+    {%else%}
+    <br><br><br>
+    <br><br><br>
+    <br><br> {% endif %}
+
+    <script src="{% static 'EscalArt/js/perfil_cliente.js' %}"></script>
+    <script src="{% static 'EscalArt/js/Galeria.js' %}"></script>
+    <!--Pie de la pagina-->
+    {% include 'escalArt/includes/footer.html' %}
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- menu toggle -->
+<script src="{% static 'escalArt/js/menu.js' %}"></script>
+
+</html>

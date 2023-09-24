@@ -1,0 +1,131 @@
+<!--Header-->
+{% load static%}
+
+<header>
+    <nav class="nav">
+        <div class="cont-logo">
+            <a href="{% url 'home' %}" style="text-decoration: none; cursor: pointer;"><img class="img-logo" src="{% static 'EscalArt/img/EscalArt.png' %}" alt=""></a>
+            <a href="{% url 'home' %}" style="text-decoration: none; cursor: pointer;">
+                <div class="logo">EscalArt</div>
+            </a>
+        </div>
+
+
+        <form method="GET" class="search-box" action=" {% url 'buscar-perfil' %}">
+            <div class="search-div">
+                <input name="query" value="{{request.GET.query}}" type="text" placeholder="Buscando..." aria-describedby="basic-addon1">
+                <button type="submit" class="icon">
+                <i class="fas fa-search"></i>
+            </button> </input>
+            </div>
+        </form>
+
+        <ul class="menu">
+            {% if user.is_authenticated %}
+            <!--Mostrar esto si el usuario esta logeado-->
+
+            <li><a href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i></a></li>
+            <li><a href="{% url 'chats' %}"><i class="fa-solid fa-comment-dots"></i></a></li>
+            <li class="especial-ayuda"><a href="{% url 'ayudacliente' %}"><i class="fa-solid fa-question"></i></a></li>
+            <li onclick="mostrarConfig_dt();" class="especial-menu"> {% if menuPfp.imagen %}
+                <img src="/{{menuPfp.imagen}}" alt="" class="img-perfil-menu">
+                <p class="text-username">{{request.user.username}}</p> {% else %}
+                <a class="config-mostrar"><i  class="fa-solid fa-circle-user"></i></a>
+                <p class="text-username es-username">{{request.user.username}}</p> {% endif %}
+                </a>
+            </li>
+            {%else%}
+            <!--Mostrar si el Usuario no esta logeado-->
+
+            <li class="home-not-loged"><a href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i></a></li>
+            <div class="menu-logearse">
+                <ul>
+                    <li ><a href="{% url 'login' %}" class="a-log"><button class="btn--3">Iniciar Sesion</button></a></li>
+                    <li><a href="{% url 'registro' %}" class="a-log"><button class="btn--3">Registrarse</button></a></li>
+                </ul>
+            </div>
+            {%endif%}
+        </ul>
+    </nav>
+    {% if user.is_authenticated %}
+    <div id="Configuracion">
+        <ul class="Configuracion-menu">
+            <div class="ver-user-config" style="font-size: 1rem; ">
+                <a href="{% url 'home' %}" style="text-decoration: none; cursor: pointer;"><img src="{% static 'EscalArt/img/EscalArt.png' %}" alt=""></a>
+                <a href="{% url 'home' %}" style="text-decoration: none; cursor: pointer;">
+                    <h1>EscalArt</h1>
+                </a>
+                <div class="nom-username">
+                    {{request.user.username}}
+                </div>
+            </div>
+            {% if user.tipoCuenta.tipoCuenta == 'artista' %}
+            <li><i class="fa-solid fa-circle-user" style="color: #FFA500 !important"></i><a href="{% url 'perfil' user.username %}">Perfil</a></li>
+            <li> <i class="fa-solid fa-bookmark" style="color: #36AE7C;"></i><a href="{% url 'perfil_cliente' user.username %}">Guardados</a></li>
+            <li class="ayuda-escondido"><i class="fa-solid fa-question" style="color: #020402;"></i><a href="{% url 'ayudacliente' %}">Ayuda Cliente</a></li>
+
+            {% else %}
+            <li><i class="fa-solid fa-circle-user" style="color: #FFA500 !important"></i><a href="{% url 'perfil_cliente' user.username %}">Perfil</a></li>
+            <li class="ayuda-escondido"><i class="fa-solid fa-question" style="color: #020402;"></i><a href="{% url 'ayudacliente' %}">Ayuda Cliente</a></li>
+            {% endif %}
+
+            <li><i class="fa-solid fa-gear" style="color: #0099CC;"></i><a href="{% url 'configuracion' %}">Configuracion</a></li>
+            <span class="linea_2"></span>
+            <li class="Cerrar-Sesion" style="color: #474747;"><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+        </ul>
+    </div>
+    {%endif%}
+</header>
+
+<script type="text/javascript" src="{% static 'EscalArt/js/menu.js' %}"></script>
+
+{% comment %}
+<header>
+    <nav class="nav">
+        <div class="logo">EscalArt</div>
+        <form method="GET" class="search-box" action=" {% url 'buscar-perfil' %}">
+            <input name="query" value="{{request.GET.query}}" type="text" placeholder="Buscando..." class="form-control" aria-describedby="basic-addon1">
+            <button type="submit" class="icon">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <ul class="menu">
+            {% if user.is_authenticated %}
+            <!--Mostrar esto si el usuario esta logeado-->
+
+            <li><a href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i></a></li>
+            <li><a href="{% url 'chats' %}"><i class="fa-solid fa-comment-dots"></i></a></li>
+            <li><a href="{% url 'ayudacliente' %}"><i class="fa-solid fa-question"></i></a></li>
+            <li onclick="mostrarConfig();"> <a><i class="fa-solid fa-circle-user"></i></a></li>
+            {%else%}
+            <!--Mostrar si el Usuario no esta logeado-->
+
+            <li class="home-not-loged"><a href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i></a></li>
+            <div class="menu-logearse">
+                <ul>
+                    <li><a href="{% url 'login' %}"><button>Iniciar Sesion</button></a></li>
+                    <li><a href="{% url 'registro' %}"><button>Registrarse</button></a></li>
+                </ul>
+            </div>
+            {%endif%}
+        </ul>
+    </nav>
+    <!--Mostrar si hace click en el perfil(Logeado)-->
+    <div id="Configuracion">
+        <ul class="Configuracion-menu">
+            {% if user.tipoCuenta.tipoCuenta == 'artista' %}
+            <li><i class="fa-solid fa-circle-user"></i><a href="{% url 'perfil' user.username %}">Perfil</a></li>
+
+            {% else %}
+            <li><i class="fa-solid fa-circle-user"></i><a href="{% url 'perfil_cliente' user.username %}">Perfil</a></li>
+            {% endif %}
+
+
+            <li><i class="fa-solid fa-gear"></i><a href="{% url 'configuracion' %}">Configuracion</a></li>
+            <span class="linea_2"></span>
+            <li class="Cerrar-Sesion"><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+
+        </ul>
+    </div>
+</header>
+{% endcomment %}

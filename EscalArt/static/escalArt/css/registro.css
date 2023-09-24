@@ -1,0 +1,331 @@
+/*------ Nuevo Diseño Registro ----*/
+
+
+/*
+:root {
+    --color-dark: #15181f;
+    --color-dark-x: #2d3431;
+    --color-dark-xx: #1f232b;
+    --color-light: #fff;
+    --color-grey: #f5f6f8;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    background-color: var(--color-grey);
+    color: var(--color-light);
+    letter-spacing: 0.5rem;
+}
+
+.bg-light {
+    background-color: var(--color-light)!important;
+}
+
+.bg-dark {
+    background-color: var(--color-dark)!important;
+}
+
+.p-6 {
+    padding: 4rem 7rem;
+}
+
+.contact-box {
+    padding: 3rem;
+}
+
+.btn {
+    font-weight: 40;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    min-width: 18rem;
+}
+
+.btn-outline-dark {
+    border: 2px solid var(--color-dark-xx);
+}
+
+.form-control {
+    background-color: var(--color-dark-xx);
+    border: 2px solid var(--color-dark-xx);
+    border-radius: .2rem;
+    padding: 1.5rem 1rem;
+}
+
+.register-bg {
+    background-image: url("../img/arte-digital_2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.testimonial {
+    bottom: 10px;
+}
+
+#div_id_tipoCuenta {
+    text-align: center;
+    left: 40%;
+    top: 70%;
+}
+
+@media (max-width: 575.98px) {
+    .p-6 {
+        padding: 2rem;
+    }
+    .contact-box {
+        padding: 0;
+    }
+    .width-100 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .register-bg {
+        min-height: 50vh;
+    }
+}*/
+
+
+/* Diseño 2 de Registro */
+
+*¨ {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../img/arte-digital.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #474747;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+}
+
+.content_registro {
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+}
+
+.logo {
+    text-align: center;
+    font-size: 3em;
+}
+
+.logo span {
+    color: #b70e21;
+}
+
+.contact-wrapper {
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, .3);
+    margin-top: 10%;
+    opacity: 0.9;
+}
+
+.contact-wrapper>* {
+    padding: 1em;
+}
+
+.contact-form {
+    background: #fff;
+    border-radius: 20px;
+}
+
+.contact-form h3 {
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 5px;
+    font-size: 35px;
+}
+
+.contact-form form {
+    margin: 0;
+    padding: 1em;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.contact-form form .block {
+    grid-column: 1.5 / 3;
+}
+
+#id_username,
+#id_nombre,
+#id_email,
+#password1,
+#password2 {
+    width: 90%;
+    padding: .6em;
+    background: none;
+    border-bottom: 4px solid #0077CC;
+    outline: 0;
+    color: #474747;
+    text-decoration: none;
+}
+
+
+/*#id_tipoCuenta_0,
+#tipoCuenta_1,*/
+
+#id_tipoCuenta {
+    position: relative;
+    display: flex;
+    font-size: 15px;
+    text-transform: uppercase;
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    margin: 0 0 -20px 0;
+    padding: 0;
+}
+
+#id_tipoCuenta ul {
+    display: inline-block;
+}
+
+.block_tipocuenta {
+    text-align: center;
+}
+
+.block_tipocuenta label {
+    color: #474747;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form checkbox {
+    width: 90%;
+    padding: .6em;
+    border: none;
+    background: none;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    outline: 0;
+    color: #fff;
+}
+
+.contact-form form .block_btn {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: -20px;
+}
+
+
+/* Diseño Defaul boton */
+
+.contact-form form button {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #474747;
+    font-size: 1rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #434343;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    margin: auto;
+}
+
+.contact-form form button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #0077CC;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn--3:hover {
+    animation: shadow-pulse 1000ms 1;
+    background-color: #0077CC;
+    color: #fff;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 #0077CC;
+    }
+    100% {
+        box-shadow: 0 0 8px 16px rgba(32, 226, 215, 0);
+    }
+}
+
+
+/* Diseño de boton 2 */
+
+
+/* .contact-form form button {
+    margin: 10px 0;
+    background: none;
+    border: 2px solid #fff;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 0;
+    transition: 0.5s;
+}
+
+.contact-form form button:hover {
+    background: #86C332;
+    color: #fff;
+} */
+
+
+/*
+.contact-info {
+    background: #000;
+}
+
+.contact-info h4,
+.contact-info ul,
+.contact-info p {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info ul li {
+    padding: .3em;
+}
+*/
+
+
+/* LARGE SCREEN */
+
+@media (min-width: 700px) {
+    body {
+        padding: 0;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .contact-wrapper>* {
+        padding: 2em;
+    }
+    .contact-info h4,
+    .contact-info ul,
+    .contact-info p {
+        padding: 1em;
+        text-align: left;
+    }
+}

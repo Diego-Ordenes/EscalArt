@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/EscalArt/static/escalArt/img/EscalArt.png">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Ayuda-Cliente.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/seleccionarC.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/943e4f11a2.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'EscalArt/css/Menu-Fotter.css' %}">
+
+</head>
+
+<body>
+    <!--Header-->
+    {% include 'escalArt/includes/menu.html' %}
+
+    <div class="scrol"></div>
+    <!--Seleccionar Categoria-->
+    <section class="select-cuenta" style="display:block ;">
+        <h1 class="title-select">¿Cual de estas opciones te describe mejor?</h1>
+        <div class="div-tipo-cuenta">
+            <i class="fa-solid fa-laptop"></i>
+            <h1>Arte Digital</h1>
+            <p>Usuarios que trabajan con arte digital</p>
+            <span></span>
+        </div>
+        <div class="div-tipo-cuenta">
+            <i class="fa-solid fa-palette"></i>
+            <h1>Creador</h1>
+            <p>Usuarios cuyo trabajos resultan en objetos fisicos</p>
+            <span></span>
+        </div>
+    </section>
+    <!--Seleccionar categorias 2 (siguiente) -->
+    <section class="selec-categoria-fondo" style="display:none;">
+        <div class="categoria-titulo">
+            <h1>Selecciona una categoria</h1>
+            <p>Elige la categoria que mejor se adapta a tu estilo de trabajo. Tendras la opcion de mostrar o esconder esta informacion en tu perfil</p>
+        </div>
+        <div class="mostrar-cat">
+            <input type="checkbox"></input>
+            <span>Mostrar categoria en el perfil</span>
+        </div>
+        <div class="buscar-categoria">
+            <input type="text" placeholder="Buscar...">
+        </div>
+        <div class="lista-sugerencias">
+            <h2>Sugerencias</h2>
+            <ul>
+                <li>
+                    <span>Anime</span>
+                    <input type="checkbox">
+                </li>
+                <li>
+                    <span>Ilustracion</span>
+                    <input type="checkbox">
+                </li>
+                <li>
+                    <span>Esculturas</span>
+                    <input type="checkbox">
+                </li>
+                <li>
+                    <span>Realismo</span>
+                    <input type="checkbox">
+                </li>
+                <li>
+                    <span>Otro</span>
+                    <input type="checkbox">
+                </li>
+            </ul>
+        </div>
+        <span class="linea_cat"></span>
+        <div class="btn-cat">
+            <input type="submit" class="btn-categoria" value="Volver">
+            <a href="#"></a>
+            </input>
+            <input type="submit" class="btn-categoria" value="Hecho">
+            <a href="#"></a>
+            </input>
+
+        </div>
+    </section>
+
+
+
+    <!--Pie de la pagina-->
+    {% include 'escalArt/includes/footer.html' %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- menu toggle -->
+    <script src="{% static 'escalArt/js/menu.js' %}"></script>
+</body>
+
+
+</html>

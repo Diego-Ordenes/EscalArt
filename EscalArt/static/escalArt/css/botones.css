@@ -1,0 +1,96 @@
+.btn-bt {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #474747;
+    font-size: 0.7rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #434343;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    margin: auto;
+}
+
+.btn-bt::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #0077CC;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn--3:hover {
+    animation: shadow-pulse 1000ms 1;
+    background-color: #0077CC;
+    color: #fff;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 #0077CC;
+    }
+    100% {
+        box-shadow: 0 0 8px 16px rgba(32, 226, 215, 0);
+    }
+}
+@media (max-width:500px){
+    .btn-bt{
+        padding: 10px 5px;
+        font-size: 0.6rem;
+    }
+}
+
+
+/* Diseño 2 de boton */
+
+
+/* .btn-form {
+    height: 3rem;
+    width: 12rem;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background: #111827;
+    cursor: pointer;
+    padding: 10px 30px;
+    color: #fff;
+    margin: 15px 0 0 0;
+    z-index: auto;
+}
+
+.btn-form::after {
+    content: '';
+    height: calc(100% + 10px);
+    width: calc(100% + 10px);
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    z-index: -11;
+    border-radius: 10px;
+    background: linear-gradient(90deg, deeppink, deepskyblue, lawngreen, deeppink);
+    background-size: 300% 100%;
+    animation: animate 3s ease infinite;
+}
+
+@keyframes animate {
+    to {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 90% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+} */

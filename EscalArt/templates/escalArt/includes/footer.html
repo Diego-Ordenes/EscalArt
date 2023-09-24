@@ -1,0 +1,33 @@
+{% load static %}
+
+<!--Pie de la pagina-->
+<footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'EscalArt/img/EscalArt.png' %}" alt="Logo EscalArt">
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>¿Quienes Somos?</h2>
+            <p>En nuestro sitio podras visualizar el arte creado por distintos usuarios,</p>
+            <p>además de pedir comisiones a tus artistas favoritos y que estos puedan organizar su trabajo a través de un medio especializado para esto.</p>
+        </div>
+        <div class="box">
+            <h2>SIGUENOS...</h2>
+            <div class="red-social">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-youtube"></a>
+            </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2022 EscalArt <b>Equipo EscalArt</b> - Politica de privacidad - Terminos de Servicios</small>
+        <br>
+        <small><a href="https://storyset.com/work" style="color: white;text-decoration:underline;">Work illustrations by Storyset</a></small>
+    </div>
+</footer>

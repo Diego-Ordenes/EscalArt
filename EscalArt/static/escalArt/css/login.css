@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("../img/arte-digital.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container__form {
+    background-color: #fff;
+    /*#0a1e35*/
+    border-radius: 15px;
+    padding: 40px;
+    opacity: 0.9;
+}
+
+.container__form img {
+    width: 100px;
+    height: 100px;
+    margin-left: 130px;
+}
+
+.container__form h2 {
+    text-align: center;
+    color: #474747;
+    padding-bottom: 20px;
+}
+
+.container__form input {
+    display: block;
+    width: 350px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #474747;
+    border-bottom: 4px solid #0077CC;
+}
+
+.container__form .check {
+    width: 15px;
+    height: 15px;
+    display: inline;
+}
+
+.container__form label {
+    color: #474747;
+}
+
+.container__form a {
+    color: #474747;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.container__form a:hover {
+    color: #b8b8b8;
+}
+
+.container__form label:hover {
+    color: #b8b8b8;
+}
+
+.container__form .boton-form {
+    position: relative;
+    display: block;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #474747;
+    font-size: 1rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid #434343;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    margin: auto;
+}
+
+.container__form .boton-form::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #0077CC;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn--3:hover {
+    animation: shadow-pulse 1000ms 1;
+    background-color: #0077CC;
+    color: #fff;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 #0077CC;
+    }
+    100% {
+        box-shadow: 0 0 8px 16px rgba(32, 226, 215, 0);
+    }
+}
+
+.btn-inicio-sesion {
+    text-align: center;
+}
+
+.btn-guardar {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.direc-cuenta {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.direc-cuenta span {
+    padding: 0 10px;
+}
+
+@media (max-width:750px) {
+    .container__form a {
+        color: #474747;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+    .container__form {
+        background-color: #fff;
+        /*#0a1e35*/
+        border-radius: 15px;
+        padding: 20px;
+        opacity: 0.9;
+    }
+}
+
+.alert-error {
+    color: #474747;
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    font-size: 0.8rem;
+}

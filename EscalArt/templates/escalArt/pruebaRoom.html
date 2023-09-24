@@ -1,0 +1,128 @@
+{% extends 'escalArt/Chats.html' %} {% load static %} {% block content %}
+<div class="seccion-chat">
+
+
+    <div class="usuario-seleccionado">
+        <div class="avatar">
+
+            {% if request.user.idUser == cliente.idCliente.idUser %} {% for a in cli %} {% if cliente.usernameArtista == a.username %} {% if a.imagen %}
+            <img src="/{{a.imagen}}" alt="img"> {% else %}
+            <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="img"> {% endif %} {% endif %} {% endfor %} {% else %} {% if cliente.idCliente.imagen %}
+            <img src="/{{cliente.idCliente.imagen}}" alt="img"> {% else %}
+            <img src="{% static 'EscalArt/img/perfil.jpg' %}" alt="img"> {% endif %} {% endif %}
+
+        </div>
+        <div class="cuerpo">
+
+            {% if request.user.idUser == cliente.idCliente.idUser %}
+            <span><a href="{% url 'perfil' cliente.usernameArtista %}">{{cliente.usernameArtista}}</a></span> {% else %}
+            <span><a href="{% url 'datosCliente' cliente.idCliente.username %}">{{cliente.idCliente.username}}</a></span> {% endif %}
+
+
+            <span>Activo - Escribiendo...</span>
+        </div>
+        <div class="opciones">
+            <ul>
+                <li>
+                    <button type="button"><i class="fas fa-video"></i></button>
+                </li>
+                <li>
+                    <button type="button"><i class="fas fa-phone-alt"></i></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <div id="chat-log" class="panel-chat">
+
+        {% for chat in chats.all %} {% if chat.idUser.idUser == request.user.idUser %}
+        <div class="mensaje left">
+            <div class="cuerpo">
+                <div class="texto">
+                    {{chat.contenido}}
+                    <span class="tiempo">
+                        <i class="far fa-clock"></i>
+                        {{chat.fecha}}
+                    </span>
+                </div>
+
+            </div>
+
+
+        </div>
+        {% else %}
+        <div class="mensaje">
+            <div class="cuerpo">
+                <div class="texto">
+                    {{chat.contenido}}
+                    <span class="tiempo">
+                        <i class="far fa-clock"></i>
+                        {{chat.fecha}}
+                    </span>
+                </div>
+
+            </div>
+
+
+        </div>
+        {% endif %} {% endfor %}
+        <!-- {% for ref in refAll %}
+        
+        {% if user == ref.idUser and cliente.usernameArtista == ref.usernameArtista %}
+        <img src="/{{ref.img_referencia}}" alt="referencias">
+        
+        {% endif %}
+        
+        {% endfor %} -->
+
+
+    </div>
+
+
+    <div class="panel-escritura">
+        <div class="textarea">
+            <div class="opcines">
+
+                {% if user.username == cliente.usernameArtista %}
+                <form action="" method="post">
+                    <input class="btn-bt btn--3" type="submit" id="file" name="comision" value="Crear Comision"> {% csrf_token %} {{comCli.as_hidden}}{{comArt.as_hidden}}
+                    <input style="display: none;" type="text" name="cliente" value="{{cliente.idCliente.username}}">
+                    <input type="hidden" name="next" value="{{request.path}}">
+
+                </form>
+                {%else%}
+                <form action="" method="POST" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    <button type="button" class="boton">
+                        <i class="far fa-image"></i>
+                        <label for="img"></label>
+                        <input type="file" id="img" name="img_referencia">
+                    </button>
+                    <input type="hidden" name="next" value="{{request.path}}">
+                    <input type="submit" name="referencia" value="subir">
+
+                </form>
+                {% endif %}
+
+
+
+                
+
+            </div>
+            <textarea id="chat-message-input" type="text" size="100"></textarea>
+            <button id="chat-message-submit" type="submit" class="enviar boton" value="Send">
+                <i class="fas fa-paper-plane btn-send-mensaje"></i>
+            </button> {{ room_name|json_script:"room-name" }}
+        </div>
+
+    </div>
+
+</div>
+
+
+{{ request.user.idUser|json_script:"user_idUser" }}
+<script src="{% static 'EscalArt/js/room.js' %}"></script>
+{% endblock %}
